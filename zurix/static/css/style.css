@@ -8,6 +8,7 @@
     font-family: "Urbanist", sans-serif;
 }
 
+/* Navbar Styling */
 .navbar {
     background: whitesmoke;
     padding-right: 15px;
@@ -50,4 +51,15 @@ button a {
     color: white;
     font-weight: bold;
     font-size: 15px;
+}
+
+/* Hero Section Styling */
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: auto;
+    height: 70vh;
+    background: red;
+    margin: 15px;
 }
