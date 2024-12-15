@@ -87,10 +87,21 @@ button a {
     padding-bottom: 10px;
 }
 
+.btn-hero {
+    display: flex;
+}
+
 .hero-btn {
     padding: 10px;
     color: white;
     background-color: black;
     border-radius: 15px;
     width: fit-content;
+    cursor: pointer;
+}
+
+.hero-btn-1 {
+    cursor: pointer;
+    color: white;
+    margin-right: 10px;
 }
