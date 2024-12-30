@@ -40,13 +40,13 @@ li a {
     margin-right: 25px;
 }
 
-button {
+.nav-btn {
     padding: 5px;
     background-color: black;
     border-radius: 15px;
 }
 
-button a {
+.nav-btn a {
     color: white;
     font-weight: bold;
     font-size: 15px;
@@ -99,7 +99,10 @@ button a {
 }
 
 .hero-btn-1 {
-    cursor: pointer;
+    padding: 10px;
+    background-color: black;
+    border-radius: 15px;
+    width: fit-content;
     color: white;
     margin-right: 10px;
 }
