@@ -161,3 +161,110 @@ li a {
     color: white;
     cursor: pointer;
 }
+
+.track-container .track .track-form button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Our Services styling */
+
+.services-container {
+    display: grid;
+    width: auto;
+    height: fit-content;
+    background: green;
+    padding: 10px;
+}
+
+.services-container .services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.services-container .services .services-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 5px;
+}
+
+.services-container .services .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.services-container .services .services-grid .services-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.services-container .services .services-grid .services-item .services-icon {
+    font-size: 40px;
+    color: black;
+    padding-bottom: 5px;
+}
+
+/* Why Contact us */
+.why-us-contaner {
+    display: grid;
+    width: auto;
+    height: fit-content;
+    background: yellow;
+    padding: 10px;
+}
+
+.why-us-contaner .why-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.why-us-contaner .why-us .why-us-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+    padding-bottom: 5px;
+}
+
+.why-us-contaner .why-us .why-us-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.why-us-contaner .why-us .why-us-grid .why-us-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.why-us-contaner .why-us .why-us-grid .why-us-item .why-us-icon {
+    font-size: 40px;
+    color: black;
+    padding-bottom: 5px;
+}
+
+.why-us-contaner .why-us .why-us-grid .why-us-item .why-us-description {
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 10px;
+}
