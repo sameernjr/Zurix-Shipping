@@ -106,3 +106,58 @@ li a {
     color: white;
     margin-right: 10px;
 }
+
+/* Track Styling */
+
+.track-container {
+    display: grid;
+    width: auto;
+    height: fit-content;
+    background: blue;
+    padding: 10px;
+}
+
+.track-container .track {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.track-container .track .track-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 5px;
+}
+
+.track-container .track .track-description {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.track-container .track .track-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.track-container .track .track-form input {
+    padding: 5px;
+    border-radius: 15px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.track-container .track .track-form button {
+    padding: 5px;
+    border-radius: 15px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
