@@ -13,7 +13,6 @@
     background: whitesmoke;
     padding-right: 15px;
     padding-left: 15px;
-    margin: 15px;
 }
 
 .navdiv {
@@ -61,7 +60,6 @@ button a {
     width: auto;
     height: 70vh;
     background: red;
-    margin: 15px;
 }
 
 .hero {
