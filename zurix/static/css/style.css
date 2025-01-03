@@ -268,3 +268,35 @@ li a {
     color: black;
     padding-bottom: 10px;
 }
+
+/* About us Page */
+
+.hero-about-container {
+    display: grid;
+    width: auto;
+    height: fit-content;
+    background: pink;
+    padding: 10px;
+}
+
+.hero-about-container .hero-about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero-about-container .hero-about .about-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+    padding-bottom: 5px;
+}
+
+.hero-about-container .hero-about .about-description {
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 10px;
+}
