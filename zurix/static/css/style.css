@@ -369,7 +369,7 @@ li a {
 /* FAQs Styling in About Us */
 
 .faqs-container {
-    min-height: 100vh;
+    min-height: 130vh;
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -403,17 +403,29 @@ li a {
     font-weight: 500;
 }
 
+.question svg {
+    transition: transform 0.3s;
+}
+
 .answer {
     max-height: 0;
     overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 1rem;
 }
 
 .answer p {
     padding-top: 1rem;
     line-height: 1.6;
     font-size: 1.4rem;
+    margin: 0;
 }
 
 .faq.active .answer {
     max-height: 300px;
+    transition: max-height 0.5s ease-in;
+}
+
+.faq.active svg {
+    transform: rotate(180deg);
 }
