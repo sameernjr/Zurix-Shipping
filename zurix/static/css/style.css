@@ -382,3 +382,11 @@ li a {
     font-weight: 700;
     margin: 2rem 0;
 }
+
+.faq {
+    max-width: 700px;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #333;
+    cursor: pointer;
+}
