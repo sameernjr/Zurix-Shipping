@@ -403,6 +403,11 @@ li a {
     font-weight: 500;
 }
 
+.answer {
+    max-height: 0;
+    overflow: hidden;
+}
+
 .answer p {
     padding-top: 1rem;
     line-height: 1.6;
