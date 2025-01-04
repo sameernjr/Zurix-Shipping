@@ -300,3 +300,68 @@ li a {
     color: black;
     padding-bottom: 10px;
 }
+
+/* Section two of about us page */
+
+.about-container {
+    display: grid;
+    width: auto;
+    height: fit-content;
+    background: purple;
+    padding: 10px;
+}
+
+.about-container .about-content-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+}
+
+.about-container .about-content-2 .about-content-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+}
+
+.about-container .about-content-2 .about-content-1 .about-header-1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 5px;
+}
+
+.about-container .about-content-2 .about-content-1 .about-description-1 {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.about-container .about-content-2 .left-hover-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+    width: 40%;
+}
+
+.about-container .about-content-2 .left-hover-container .about-2-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+}
+
+.about-container .about-content-2 .about-2-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+}
