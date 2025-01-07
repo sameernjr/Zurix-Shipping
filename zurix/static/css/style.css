@@ -361,9 +361,10 @@ li a {
 .about-container .about-content-2 .about-2-right {
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    justify-content: flex-start;
+    align-items: flex-end;
     padding: 20px;
+    width: 70%;
 }
 
 /* FAQs Styling in About Us */
