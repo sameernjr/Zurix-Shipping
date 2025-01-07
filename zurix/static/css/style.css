@@ -429,3 +429,51 @@ li a {
 .faq.active svg {
     transform: rotate(180deg);
 }
+
+/* Testimonial Styling */
+
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.testimonials .testimonial-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+    padding-bottom: 5px;
+}
+
+.testimonials .testimonial-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.testimonials .testimonial-container .testimonial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(146, 138, 138);
+    border-radius: 15px;
+}
+
+.testimonials .testimonial-container .testimonial .testimonial-text {
+    font-size: 20px;
+    color: black;
+    padding-bottom: 5px;
+}
+
+.testimonials .testimonial-container .testimonial .testimonial-author {
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 10px;
+    align-self: start;
+}
