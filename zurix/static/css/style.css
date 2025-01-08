@@ -483,9 +483,17 @@ li a {
 
 .footer {
     display: flex;
-    justify-content: center;
+    flex-direction: flex-start;
+    /* justify-content: center; */
     align-items: center;
     height: auto;
     background: black;
     color: white;
+}
+
+.footer .layer1-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
 }
