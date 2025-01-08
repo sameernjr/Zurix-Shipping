@@ -482,18 +482,24 @@ li a {
 /* Footer Styling */
 
 .footer {
-    display: flex;
-    flex-direction: flex-start;
-    /* justify-content: center; */
-    align-items: center;
-    height: auto;
+    display: grid;
+    width: auto;
+    height: fit-content;
     background: black;
     color: white;
+    padding: 10px;
 }
 
 .footer .layer1-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.footer .right-policy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 20px;
 }
