@@ -478,3 +478,14 @@ li a {
     padding-bottom: 10px;
     align-self: start;
 }
+
+/* Footer Styling */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background: black;
+    color: white;
+}
