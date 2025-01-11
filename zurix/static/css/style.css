@@ -60,6 +60,9 @@ li a {
     width: auto;
     height: 70vh;
     background: url(../images/hero.jpg) no-repeat center;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 .hero {
@@ -115,6 +118,9 @@ li a {
     height: fit-content;
     background: #FFFFFF;
     padding: 10px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 .track-container .track {
@@ -175,6 +181,9 @@ li a {
     height: fit-content;
     background: #FFFFFF;
     padding: 10px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 .services-container .services {
@@ -183,6 +192,14 @@ li a {
     justify-content: center;
     align-items: center;
     padding: 20px;
+}
+
+.services-container .services .services-grid .service .service-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .services-container .services .services-header {
