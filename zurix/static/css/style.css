@@ -13,6 +13,11 @@
     background: whitesmoke;
     padding-right: 15px;
     padding-left: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 .navdiv {
@@ -135,11 +140,11 @@ li a {
     font-size: 40px;
     font-weight: 700;
     color: black;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 }
 
 .track-container .track .track-description {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
     color: black;
     padding-bottom: 10px;
@@ -206,7 +211,7 @@ li a {
     font-size: 40px;
     font-weight: 700;
     color: black;
-    padding-bottom: 5px;
+    padding-bottom: 60px;
 }
 
 .services-container .services .services-grid {
