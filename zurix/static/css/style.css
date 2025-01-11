@@ -216,7 +216,7 @@ li a {
 }
 
 /* Why Contact us */
-.why-us-contaner {
+.why-us-container {
     display: grid;
     width: auto;
     height: fit-content;
@@ -224,7 +224,7 @@ li a {
     padding: 10px;
 }
 
-.why-us-contaner .why-us {
+.why-us-container .why-us {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -232,21 +232,21 @@ li a {
     padding: 20px;
 }
 
-.why-us-contaner .why-us .why-us-header {
+.why-us-container .why-us .why-us-header {
     font-size: 40px;
     font-weight: 700;
     color: black;
     padding-bottom: 5px;
 }
 
-.why-us-contaner .why-us .why-us-grid {
+.why-us-container .why-us .why-us-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     padding: 20px;
 }
 
-.why-us-contaner .why-us .why-us-grid .why-us-item {
+.why-us-container .why-us .why-us-grid .why-us-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -256,13 +256,13 @@ li a {
     border-radius: 15px;
 }
 
-.why-us-contaner .why-us .why-us-grid .why-us-item .why-us-icon {
+.why-us-container .why-us .why-us-grid .why-us-item .why-us-icon {
     font-size: 40px;
     color: black;
     padding-bottom: 5px;
 }
 
-.why-us-contaner .why-us .why-us-grid .why-us-item .why-us-description {
+.why-us-container .why-us .why-us-grid .why-us-item .why-us-description {
     font-size: 15px;
     font-weight: 500;
     color: black;
