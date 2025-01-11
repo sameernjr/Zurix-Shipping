@@ -59,7 +59,7 @@ li a {
     grid-template-columns: 1fr 1fr;
     width: auto;
     height: 70vh;
-    background: red;
+    background: url(../images/hero.jpg) no-repeat center;
 }
 
 .hero {
@@ -113,7 +113,7 @@ li a {
     display: grid;
     width: auto;
     height: fit-content;
-    background: blue;
+    background: #FFFFFF;
     padding: 10px;
 }
 
@@ -128,14 +128,14 @@ li a {
 .track-container .track .track-header {
     font-size: 40px;
     font-weight: 700;
-    color: white;
+    color: black;
     padding-bottom: 5px;
 }
 
 .track-container .track .track-description {
     font-size: 15px;
     font-weight: 500;
-    color: white;
+    color: black;
     padding-bottom: 10px;
 }
 
@@ -173,7 +173,7 @@ li a {
     display: grid;
     width: auto;
     height: fit-content;
-    background: green;
+    background: #FFFFFF;
     padding: 10px;
 }
 
@@ -188,7 +188,7 @@ li a {
 .services-container .services .services-header {
     font-size: 40px;
     font-weight: 700;
-    color: white;
+    color: black;
     padding-bottom: 5px;
 }
 
