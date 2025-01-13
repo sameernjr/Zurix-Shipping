@@ -63,7 +63,7 @@ li a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: auto;
-    height: 70vh;
+    height: 80vh;
     background: url(../images/hero.jpg) no-repeat center;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -276,6 +276,14 @@ li a {
     padding: 20px;
     background-color: white;
     border-radius: 15px;
+}
+
+.why-us-container .why-us .why-us-grid .why-us-item .why-us-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .why-us-container .why-us .why-us-grid .why-us-item .why-us-icon {
