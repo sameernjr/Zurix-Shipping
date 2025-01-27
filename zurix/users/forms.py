@@ -4,7 +4,7 @@ from .models import CustomUser
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField()
-    phone_number = forms.ChoiceField(max_length=15)
+    phone_number = forms.CharField(max_length=15)
     address = forms.CharField(widget=forms.Textarea)
 
     class Meta:
