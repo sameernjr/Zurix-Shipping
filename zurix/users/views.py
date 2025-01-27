@@ -13,7 +13,7 @@ def signup(request):
         
     else:
         form = SignUpForm()
-    return render (request, 'users/signup.html', {'form':form})
+    return render (request, 'registration/signup.html', {'form':form})
 
 def profile(request):
     return render(request, 'users/profile.html')
