@@ -10,14 +10,14 @@
 
 /* Navbar Styling */
 .navbar {
-    background: whitesmoke;
+    background: rgb(23, 21, 21);
     padding-right: 15px;
     padding-left: 15px;
-    margin-left: 10px;
+    /* margin-left: 10px;
     margin-right: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    margin-bottom: 10px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 5px; */
 }
 
 .navdiv {
@@ -30,7 +30,7 @@
 .logo a {
     font-size: 35px;
     font-weight: 600;
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 li {
@@ -39,7 +39,7 @@ li {
 }
 
 li a {
-    color: rgb(0, 0, 0);
+    color: white;
     font-size: 18px;
     font-weight: bold;
     margin-right: 25px;
@@ -47,12 +47,12 @@ li a {
 
 .nav-btn {
     padding: 5px;
-    background-color: black;
+    background-color: white;
     border-radius: 15px;
 }
 
 .nav-btn a {
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 15px;
 }
