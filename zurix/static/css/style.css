@@ -573,7 +573,8 @@ li a {
 
 .rights-policy .instagram,
 .rights-policy .facebook,
-.rights-policy .twitter {
+.rights-policy .twitter,
+.rights-policy .linkedIn {
     margin-left: 15px;
     text-decoration: none;
     color: white;
