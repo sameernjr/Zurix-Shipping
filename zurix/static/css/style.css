@@ -293,7 +293,7 @@ li a {
 .hero-about-container {
     display: grid;
     width: auto;
-    height: fit-content;
+    height: 400px;
     background: pink;
     padding: 10px;
 }
