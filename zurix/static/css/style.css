@@ -13,11 +13,6 @@
     background: rgb(23, 21, 21);
     padding-right: 15px;
     padding-left: 15px;
-    /* margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    /* border-radius: 5px; */
 }
 
 .navdiv {
@@ -506,24 +501,34 @@ li a {
 /* Footer Styling */
 
 .footer {
-    display: grid;
-    width: auto;
-    height: fit-content;
-    background: black;
-    color: white;
-    padding: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(23, 21, 21);
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.footer .layer1-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.layer1-container {
+    display: flex;
+    justify-content: space-between;
     gap: 20px;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
-.footer .right-policy {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+.layer1 {
+    flex: 1;
+}
+
+.rights-policy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.rights-policy a {
+    margin-left: 15px;
+    text-decoration: none;
 }
