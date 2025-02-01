@@ -501,6 +501,7 @@ li a {
 /* Footer Styling */
 
 .footer {
+    flex-shrink: 0;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -518,6 +519,27 @@ li a {
 
 .layer1 {
     flex: 1;
+}
+
+.layer1 .footer-header {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.layer1 .footer-header .weekdays {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.layer1 .footer-header .weekends {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
 }
 
 .rights-policy {
