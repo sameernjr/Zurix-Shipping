@@ -63,7 +63,7 @@ li a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: auto;
-    height: 80vh;
+    height: 500px;
     background: url(../images/hero.jpg) no-repeat center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
