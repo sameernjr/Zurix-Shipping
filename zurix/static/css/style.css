@@ -528,14 +528,35 @@ li a {
     padding-bottom: 10px;
 }
 
-.layer1 .footer-header .weekdays {
+.layer1 .weekdays {
     font-size: 15px;
     font-weight: 500;
     color: white;
     padding-bottom: 10px;
 }
 
-.layer1 .footer-header .weekends {
+.layer1 .weekends {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.layer1 .footer-address {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.layer1 .footer-phone {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.layer1 .footer-email {
     font-size: 15px;
     font-weight: 500;
     color: white;
@@ -550,7 +571,14 @@ li a {
     border-top: 1px solid #ddd;
 }
 
-.rights-policy a {
+.rights-policy .instagram,
+.rights-policy .facebook,
+.rights-policy .twitter {
     margin-left: 15px;
     text-decoration: none;
+    color: white;
+}
+
+.rights-policy p {
+    color: white;
 }
