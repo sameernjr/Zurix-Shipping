@@ -266,7 +266,8 @@ li a {
 
 .services-container {
     display: grid;
-    width: auto;
+    width: 100%;
+    margin: 0 auto;
     height: fit-content;
     background: #FFFFFF;
     padding: 10px;
@@ -281,12 +282,32 @@ li a {
     padding: 20px;
 }
 
+.services-container .services .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+.services-container .services .services-grid .service {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .services-container .services .services-grid .service .service-img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
 .services-container .services .services-header {
@@ -294,13 +315,6 @@ li a {
     font-weight: 700;
     color: black;
     padding-bottom: 60px;
-}
-
-.services-container .services .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
 }
 
 .services-container .services .services-grid .services-item {
