@@ -646,6 +646,25 @@ li a {
     align-self: start;
 }
 
+/* Contact Us Styling */
+
+
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contact-form .contact-header {
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 30px;
+}
+
 /* Footer Styling */
 
 .footer {
