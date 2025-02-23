@@ -468,7 +468,7 @@ li a {
     display: grid;
     width: auto;
     height: fit-content;
-    background: purple;
+    background: #1A1A1A;
     padding: 10px;
 }
 
@@ -519,8 +519,14 @@ li a {
     padding: 20px;
 }
 
+.about-header-2,
+.about-description-2 {
+    color: #fff;
+}
+
 .about-container .about-content-2 .about-2-right {
     display: flex;
+    /* background: url(../images/about-sider.svg) no-repeat center; */
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
@@ -605,7 +611,7 @@ li a {
 .testimonials .testimonial-header {
     font-size: 40px;
     font-weight: 700;
-    color: black;
+    color: #fff;
     padding-bottom: 5px;
 }
 
@@ -622,20 +628,20 @@ li a {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: rgb(146, 138, 138);
+    background-color: #1a1a1a;
     border-radius: 15px;
 }
 
 .testimonials .testimonial-container .testimonial .testimonial-text {
     font-size: 20px;
-    color: black;
+    color: #fff;
     padding-bottom: 5px;
 }
 
 .testimonials .testimonial-container .testimonial .testimonial-author {
     font-size: 15px;
     font-weight: 500;
-    color: black;
+    color: #fff;
     padding-bottom: 10px;
     align-self: start;
 }
@@ -716,7 +722,7 @@ li a {
 .rights-policy .instagram,
 .rights-policy .facebook,
 .rights-policy .twitter,
-.rights-policy .linkedIn {
+.rights-policy .LinkedIn {
     margin-left: 15px;
     text-decoration: none;
     color: white;
