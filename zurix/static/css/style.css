@@ -126,11 +126,11 @@ li a {
 
 .hero-btn {
     appearance: none;
-    background-color: none;
+    background-color: #fff;
     border: 0.125em solid #1A1A1A;
     border-radius: 0.5em;
     box-sizing: border-box;
-    color: #3B3B3B;
+    color: #1A1A1A;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -165,11 +165,11 @@ li a {
 
 .hero-btn-1 {
     appearance: none;
-    background-color: none;
+    background-color: #fff;
     border: 0.125em solid #1A1A1A;
     border-radius: 0.5em;
     box-sizing: border-box;
-    color: #3B3B3B;
+    color: #1A1A1A;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -436,7 +436,7 @@ li a {
     display: grid;
     width: auto;
     height: 400px;
-    background: pink;
+    background: #fff;
     padding: 10px;
 }
 
