@@ -2,19 +2,23 @@
 
 {% block content %}
     <form method="post" class="contact-form">
-        <h1 class="form-header">Contact Us</h1>
+        <div class="contact-header">
+            <h1 class="form-header">Contact Us</h1>
+        </div>
         {% csrf_token %}
-        <div class="cf-3">
-            <label for="id_name" class="contact-label">Name</label>
-            {{ form.name }}
-        </div>
-        <div class="cf-3">
-            <label for="id_email" class="contact-label">Email</label>
-            {{ form.name }}
-        </div>
-        <div class="cf-3">
-            <label for="id_message" class="contact-label">Message</label>
-            {{ form.message }}
+        <div class="contact-labels">
+            <div class="cf-3">
+                <label for="id_name" class="contact-label">Name</label>
+                {{ form.name }}
+            </div>
+            <div class="cf-3">
+                <label for="id_email" class="contact-label">Email</label>
+                {{ form.name }}
+            </div>
+            <div class="cf-3">
+                <label for="id_message" class="contact-label">Message</label>
+                {{ form.message }}
+            </div>
         </div>
         <button type="submit">Submit</button>
     </form>
