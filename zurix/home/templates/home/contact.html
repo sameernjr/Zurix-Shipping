@@ -2,9 +2,21 @@
 
 {% block content %}
     <h1>Contact Us</h1>
-    <form method="post">
+    <form method="post" class="contact-form">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <div class="cf-3">
+            <label for="id_name" class="contact-label">Name</label>
+            {{ form.name }}
+        </div>
+        <div class="cf-3">
+            <label for="id_email" class="contact-label">Email</label>
+            {{ form.name }}
+        </div>
+        <div class="cf-3">
+            <label for="id_message" class="contact-label">Message</label>
+            {{ form.message }}
+        </div>
         <button type="submit">Submit</button>
     </form>
     {% for message in messages %}
