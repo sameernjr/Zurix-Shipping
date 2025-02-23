@@ -92,8 +92,8 @@ li a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: auto;
-    height: 500px;
-    background: url(../images/hero.jpg) no-repeat center;
+    height: 600px;
+    background: url(../images/index-hero.svg) no-repeat center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -109,14 +109,14 @@ li a {
 .hero-header {
     font-size: 40px;
     font-weight: 700;
-    color: white;
+    color: #1A1A1A;
     padding-bottom: 5px;
 }
 
 .hero-description {
     font-size: 15px;
     font-weight: 500;
-    color: white;
+    color: #1A1A1A;
     padding-bottom: 10px;
 }
 
