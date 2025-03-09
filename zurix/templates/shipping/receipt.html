@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Shipping Receipt</h1>
+    <p>Order ID: {{ order.id }}</p>
+    <p>Item: {{ order.item_name }}</p>
+    <p>Weight: {{ order.weight }}</p>
+    <p>Cost: ${{ order.cost }}</p>
+    <p>Shipping Address: {{ order.shipping_address }}</p>
+</body>
+</html>
