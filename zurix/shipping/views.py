@@ -4,7 +4,8 @@ from .models import ShippingOrder
 from .forms import ShippingForm
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
-from django.conf import pdfkit
+import pdfkit
+from django.conf import settings
 
 
 # Create your views here.
@@ -45,3 +46,5 @@ def admin_dashboard(request):
 def calculate_shipping_cost(weight):
     #Example: $5 per Kg
     return weight * 5
+
+pdfkit_config = pdfkit.configuration(wkhtmltopdf=settings.WKHTMLTOPDF_PATH)
