@@ -137,4 +137,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-WKHTMLTOPDF_PATH = os.getenv('WKHTMLTOPDF','C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
+WKHTMLTOPDF_PATH = os.getenv('WKHTMLTOPDF', r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
