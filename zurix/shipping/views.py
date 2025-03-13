@@ -4,6 +4,7 @@ from .models import ShippingOrder
 from .forms import ShippingForm
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
+from django.conf import pdfkit
 
 
 # Create your views here.
