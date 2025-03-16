@@ -9,15 +9,19 @@ from django.conf import settings
 
 
 # Create your views here.
+
+
+
 @login_required
 def shipping_form(request):
-    form = ShippingForm(request.POST)
-    if form.is_valid():
-        order = form.save(commit=False)
-        order.user = request.user
-        order.cost = calculate_shipping_cost(order.weight)
-        order.save()
-        return redirect('generate_receipt', order_id=order.id)
+    if request.method == 'POST':
+        form = ShippingForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.cost = calculate_shipping_cost(order.weight)
+            order.save()
+            return redirect('generate_receipt', order_id=order.id)
     else:
         form = ShippingForm()
     return render(request, 'shipping/order_form.html', {'form': form})
