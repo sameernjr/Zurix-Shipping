@@ -20,8 +20,8 @@ class ShippingQuoteView(View):
             if quote.region == 'malaysia':
                  quote.origin = f"{form.cleaned_data['origin_country']}, Malaysia"
                  quote.destination = f"{form.cleaned_data['destination_country']}, Malaysia"
-            elif:
-                quote.origin = form.cleaned_data    ['origin_country']
+            else:
+                quote.origin = form.cleaned_data['origin_country']
                 quote.destination = form.cleaned_data['destination_country']
 
             quote.origin_address = form.cleaned_data['origin_address']
@@ -32,8 +32,7 @@ class ShippingQuoteView(View):
             if quote.shipping_method == 'standard':
                 quote.estimated_price = base_rate
                 quote.estimated_delivery_time = '3-5 business days'
-             elif: 
-                quote.shipping_method == 'express':
+            elif quote.shipping_method == 'express':
                 quote.estimated_price = base_rate + 10
                 quote.estimated_delivery_time = '1-2 business days'
             else:
@@ -54,4 +53,4 @@ class QuoteDetailView(View):
         quote = ShippingQuote.objects.get(quote_id=quote_id)
         return render(request, 'quotes/quote_detail.html', {'quote': quote})
     
-    
+
