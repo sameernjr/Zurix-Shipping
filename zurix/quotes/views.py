@@ -28,6 +28,7 @@ class ShippingQuoteView(View):
             quote.destination_address = form.cleaned_data['destination_address']
 
             weight = float(quote.weight)
+            base_rate = weight*5  # Define a base rate (adjust the value as needed)
 
             if quote.shipping_method == 'standard':
                 quote.estimated_price = base_rate

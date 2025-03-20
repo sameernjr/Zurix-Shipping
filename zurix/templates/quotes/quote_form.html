@@ -1,1 +1,380 @@
 {% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="quote-container">
+        <div class="quote-card">
+            <div class="card-header">
+                <h3>Get a Shipping Quote</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" id="quote-form">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.region.id_for_label }}">Shipping Region</label>
+                        {{ form.region }}
+                        <small class="form-text">
+                            Malaysia: RM5 per kg | Asia: RM10 per kg | International: RM20 per kg
+                        </small>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-half">
+                            <h5>Origin</h5>
+                            <div class="form-group country-select-container">
+                                <label for="{{ form.origin_country.id_for_label }}"> Country/State</label>
+                                {{ form.origin_country }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.origin_address.id_for_label }}">Address</label>
+                                {{ form.origin_address }}
+                            </div>
+                        </div>
+                        <div class="col-half">
+                            <h5>Destination</h5>
+                            <div class="from-group country-select-container">
+                                <label for="{{ form.destination_country.id_for_label }}">Country/State</label>
+                                {{ form.destination_country }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.destination_address.id_for_label }}">Address</label>
+                                {{ form.destination_address }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-half">
+                            <div class="form-group">
+                                <label for="{{ form.weight.id_for_label }}">Weight (Kg)</label>
+                                {{ form.weight }}
+                            </div>
+                        </div>
+                        <div class="col-half">
+                            <div class="form-group">
+                                <label for="{{ form.dimensions.id_for_label}}">Dimensions</label>
+                                {{ form.dimensions }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.shipping_method.id_for_label }}">Shipping Method</label>
+                        {{ form.shipping_method }}
+                        <small class="form-text">
+                            Standard: No additional charge | Express: +RM10 | Overnight: +RM20
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Generate Quote</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .quote-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .quote-card {
+        width: 100%;
+        max-width: 800px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header{
+        background-color: #0d6efd;
+        color: #fff;
+        padding: 15px 20px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .card-header h3{
+        margin: 0;
+    }
+
+    .card-body{
+        padding: 20px;
+    }
+
+    .form-group{
+        margin-bottom: 20px;
+    }
+
+    label{
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    input, select, textarea{
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .form-text {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .form-row{
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+
+    .col-half{
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 10px;
+        boz-sizing: border-box;
+    }
+
+    .btn-submit{
+        background-color: #0d6efd;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-submit:hover {
+        background-color: #0b5ed7;
+    }
+
+    @media (max-width: 768px){
+        .col-half{
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .form-row{
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const malaysiaStates =[
+            ['', 'Select State'],
+            ['johor', 'Johor'],
+            ['kedah', 'Kedah'],
+            ['kelantan', 'Kelantan'],
+            ['melaka', 'Melaka'],
+            ['negeri sembilan', 'Negeri Sembilan'],
+            ['pahang', 'Pahang'],
+            ['penang', 'Penang'],
+            ['perak', 'Perak'],
+            ['perlis', 'Perlis'],
+            ['sarawak', 'Sarawak'],
+            ['selangor', 'Selangor'],
+            ['terengganu', 'Terengganu'],
+            ['kuala lumpur', 'Kuala Lumpur'],
+            ['labuan', 'Labuan'],
+            ['putrajaya', 'Putrajaya']
+            ['sabah', 'Sabah'],
+            ['sarawak', 'Sarawak'],
+            ['wilayah persekutuan', 'Wilayah Persekutuan']
+        ];
+
+        const asiaCountries = [
+            ['', 'Select Country'],
+            ['afghanistan', 'Afghanistan'],
+            ['armenia', 'Armenia'],
+            ['azerbaijan', 'Azerbaijan'],
+            ['bahrain', 'Bahrain'],
+            ['bangladesh', 'Bangladesh'],
+            ['bhutan', 'Bhutan'],
+            ['brunei', 'Brunei'],
+            ['cambodia', 'Cambodia'],
+            ['china', 'China'],
+            ['cyprus', 'Cyprus'],
+            ['georgia', 'Georgia'],
+            ['india', 'India'],
+            ['indonesia', 'Indonesia'],
+            ['iran', 'Iran'],
+            ['iraq', 'Iraq'],
+            ['israel', 'Israel'],
+            ['japan', 'Japan'],
+            ['jordan', 'Jordan'],
+            ['kazakhstan', 'Kazakhstan'],
+            ['kuwait', 'Kuwait'],
+            ['kyrgyzstan', 'Kyrgyzstan'],
+            ['laos', 'Laos'],
+            ['lebanon', 'Lebanon'],
+            ['malaysia', 'Malaysia'],
+            ['maldives', 'Maldives'],
+            ['mongolia', 'Mongolia'],
+            ['myanmar', 'Myanmar'],
+            ['nepal', 'Nepal'],
+            ['north korea', 'North Korea'],
+            ['oman', 'Oman'],
+            ['pakistan', 'Pakistan'],
+            ['palestine', 'Palestine'],
+            ['philippines', 'Philippines'],
+            ['qatar', 'Qatar'],
+            ['saudi arabia', 'Saudi Arabia'],
+            ['singapore', 'Singapore'],
+            ['south korea', 'South Korea'],
+            ['sri lanka', 'Sri Lanka'],
+            ['syria', 'Syria'],
+            ['tajikistan', 'Tajikistan'],
+            ['thailand', 'Thailand'],
+            ['timor-leste', 'Timor-Leste'],
+            ['turkey', 'Turkey'],
+            ['turkmenistan', 'Turkmenistan'],
+            ['united arab emirates', 'United Arab Emirates'],
+            ['uzbekistan', 'Uzbekistan'],
+            ['vietnam', 'Vietnam'],
+            ['yemen', 'Yemen'],
+        
+        ];
+
+        const InternationalCountries = [
+            ['', 'Select Country'],
+            ['afghanistan', 'Afghanistan'],
+            ['albania', 'Albania'],
+            ['algeria', 'Algeria'],
+            ['andorra', 'Andorra'],
+            ['angola', 'Angola'],
+            ['antigua and barbuda', 'Antigua and Barbuda'],
+            ['argentina', 'Argentina'],
+            ['armenia', 'Armenia'],
+            ['australia', 'Australia'],
+            ['austria', 'Austria'],
+            ['azerbaijan', 'Azerbaijan'],
+            ['bahamas', 'Bahamas'],
+            ['bahrain', 'Bahrain'],
+            ['bangladesh', 'Bangladesh'],
+            ['barbados', 'Barbados'],
+            ['belarus', 'Belarus'],
+            ['belgium', 'Belgium'],
+            ['belize', 'Belize'],
+            ['benin', 'Benin'],
+            ['bhutan', 'Bhutan'],
+            ['bolivia', 'Bolivia'],
+            ['bosnia and herzegovina', 'Bosnia and Herzegovina'],
+            ['botswana', 'Botswana'],
+            ['brazil', 'Brazil'],
+            ['brunei', 'Brunei'],
+            ['bulgaria', 'Bulgaria'],
+            ['burkina faso', 'Burkina Faso'],
+            ['burundi', 'Burundi'],
+            ['cabo verde', 'Cabo Verde'],
+            ['cambodia', 'Cambodia'],
+            ['cameroon', 'Cameroon'],
+            ['canada', 'Canada'],
+            ['central african republic', 'Central African Republic'],
+            ['chad', 'Chad'],
+            ['chile', 'Chile'],
+            ['china', 'China'],
+            ['colombia', 'Colombia'],
+            ['comoros', 'Comoros'],
+            ['congo', 'Congo'],
+            ['costa rica', 'Costa Rica'],
+            ['croatia', 'Croatia'],
+            ['cuba', 'Cuba'],
+            ['cyprus', 'Cyprus'],
+            ['czech republic', 'Czech Republic'],
+            ['denmark', 'Denmark'],
+            ['djibouti', 'Djibouti'],
+            ['dominica', 'Dominica'],
+            ['dominican republic', 'Dominican Republic'],
+            ['ecudo', 'Ecuador'],
+            ['egypt', 'Egypt'],
+            ['el salvador', 'El Salvador'],
+            ['equatorial guinea', 'Equatorial Guinea'],
+            ['eritrea', 'Eritrea'],
+            ['estonia', 'Estonia'],
+            ['eswatini', 'Eswatini'],
+            ['ethiopia', 'Ethiopia'],
+            ['fiji', 'Fiji'],
+            ['finland', 'Finland'],
+            ['france', 'France'],
+            ['gabon', 'Gabon'],
+            ['gambia', 'Gambia'],
+            ['georgia', 'Georgia'],
+            ['germany', 'Germany'],
+            ['ghana', 'Ghana'],
+            ['greece', 'Greece'],
+            ['grenada', 'Grenada'],
+            ['guatemala', 'Guatemala'],
+            ['guinea', 'Guinea'],
+            ['guinea-bissau', 'Guinea-Bissau'],
+            ['guyana', 'Guyana'],
+            ['haiti', 'Haiti'],
+            ['honduras', 'Honduras'],
+            ['hungary', 'Hungary'],
+            ['iceland', 'Iceland'],
+            ['india', 'India'],
+            ['indonesia', 'Indonesia'],
+            ['iran', 'Iran'],
+            ['iraq', 'Iraq'],
+            ['ireland', 'Ireland'],
+            ['israel', 'Israel'],
+        ];
+
+        const regionSelect = document.getElementById('id_region');
+        const originCountrySelect = document.getElementById('id_origin_country');
+        const destinationCountrySelect = document.getElementById('id_destination_country');
+
+        function populateDropdown(selectElement, options) {
+            selectElement.innerHTML = '';
+
+            options.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option[0];
+                optionElement.textContent = option[1];
+                selectElement.appendChild(optionElement);
+            });
+        }
+
+        function updateCountryDropdown(){
+            const selectedRegion = regionSelect.value;
+
+            if (selectedRegion = 'malaysia'){
+                populationDropdown(originCountrySelect, malaysiaStates);
+                populationDropdown(destinationCountrySelect, malaysiaStates);
+            } else if (selectRegion === 'asia') {
+                populateDropdown(originCountrySelect, asiaCountries);
+                populateDropdown(destinationCountrySelect, asiaCountries);
+            } else if (selectRegion === 'international') {
+                populateDropdown(originCountrySelect, InternationalCountries);
+                populateDropdown(destinationCountrySelect, InternationalCountries);
+            } else {
+                populateDropdown(originCountrySelect, [['', 'Select Region First']]);
+                populateDropdown(destinationCountrySelect, [['', 'Select Region First']]);
+            }
+        }
+
+        updateCountryDropdown();
+
+        regionSelect.addEventListener('change', updateCountryDropdown);
+    });
+</script>
+{% endblock %}
