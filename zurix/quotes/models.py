@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class ShippingQuote(models.Model):
@@ -9,8 +10,8 @@ class ShippingQuote(models.Model):
         ('international', 'International'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    origin = models.Charfield(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    origin = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)
     region = models.CharField(max_length=100, choices=REGION_CHOICES)
 
