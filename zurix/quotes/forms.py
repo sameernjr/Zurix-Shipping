@@ -116,14 +116,14 @@ class ShippingQuoteForm(forms.ModelForm):
 
     class Meta:
         model = ShippingQuote
-        fields = ['region', 'origin_country', 'origin_address', 'destination_country', 'destination_address', 'weight', 'dimensions', 'item_desription', 'shipping_method']
+        fields = ['region', 'origin_country', 'origin_address', 'destination_country', 'destination_address', 'weight', 'dimensions', 'item_description', 'shipping_method']
 
         widgets = {
             'region': forms.Select(attrs={'class':'form-control', 'id': 'id_region'}),
             'weight': forms.NumberInput(attrs={'class': 'form-control'}),
             'dimensions': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Length x Width x Height'}),
             'item_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'shipping_method': forms.TextInput(attrs={'class': 'form-control'}, choices=[
+            'shipping_method': forms.Select(attrs={'class': 'form-control'}, choices=[
                 ('standard', 'Standard Shipping'),
                 ('express', 'Express Shipping'),
                 ('overnight', 'Overnight Shipping'),
