@@ -2,6 +2,12 @@ from django import forms
 from .models import ShippingQuote
 
 class ShippingQuoteForm(forms.ModelForm):
+
+    REGION_CHOICES = [
+        ('within_malaysia', 'Within Malaysia'),
+        ('within_asia','Within Asia'),
+        ('international', 'International'),
+    ]
     MALAYSIA_STATES = [
         ('','Select State'),
         ('johor', 'Johor'),
@@ -109,29 +115,111 @@ class ShippingQuoteForm(forms.ModelForm):
         ('vietnam','Vietnam'),
     ]
 
-    origin_country = forms.ChoiceField(choices=[], required=False, widget=forms.Select(attrs={'class':'form-control'})) 
-    destination_country = forms.ChoiceField(choices=[], required=False, widget=forms.Select(attrs={'class':'form-control'}))
 
-    origin_address = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control', 'rows':3}), required=True)
+    region = forms.ChoiceField(
+        choices=REGION_CHOICES, 
+        required=True, 
+        widget=forms.Select(attrs={'class':'form-control', 'id':'id_region'})
+    )
+    
+    origin_country = forms.ChoiceField(
+        choices=[('','Select Country')], 
+        required=False, 
+        widget=forms.Select(attrs={'class':'form-control', 'id':'id_origin_country'})
+    )
+
+    destination_country = forms.ChoiceField(
+        choices=[('','Select Country')], 
+        required=False, 
+        widget=forms.Select(attrs={'class':'form-control', 'id':'id_destination_country'})
+    )
+
+    origin_state = forms.ChoiceField(
+        choices=[('','Select State')], 
+        required=False, 
+        widget=forms.Select(attrs={'class':'form-control', 'id':'id_origin_state'})
+    )
+
+    destination_state = forms.ChoiceField(
+        choices=[('','Select State')], 
+        required=False, 
+        widget=forms.Select(attrs={'class':'form-control', 'id':'id_destination_state'})
+    )
+
+    origin_address = forms.CharField(
+        widget=forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
+        required=True, 
+    )
 
     class Meta:
         model = ShippingQuote
-        fields = ['region', 'origin_country', 'origin_address', 'destination_country', 'destination_address', 'weight', 'dimensions', 'item_description', 'shipping_method']
+        fields = [
+            'region', 'origin_country', 'origin_state', 'origin_address',
+            'destination_country', 'destination_state', 'destination_address',
+            'weight', 'dimensions', 'item_description', 'shipping_method'
+        ]
 
         widgets = {
-            'region': forms.Select(attrs={'class':'form-control', 'id': 'id_region'}),
-            'weight': forms.NumberInput(attrs={'class': 'form-control'}),
-            'dimensions': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Length x Width x Height'}),
-            'item_description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'shipping_method': forms.Select(attrs={'class': 'form-control'}, choices=[
+            'region': forms.Select(attrs={'class':'form-control', 'id':'id_region'}),
+            'weight': forms.NumberInput(attrs={'class':'form-control'}),
+            'dimensions': forms.TextInput(attrs={'class':'form-control','placeholder':'Length x Width x Height'}),
+            'item_description': forms.Textarea(attrs={'class':'form-control', 'rows':'3'}),
+            'shipping_method': forms.Select(attrs={'class':'form-control'}, choices=[
                 ('standard', 'Standard Shipping'),
                 ('express', 'Express Shipping'),
                 ('overnight', 'Overnight Shipping'),
             ]),
         }
-
+    
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(**args, **kwargs)
 
         self.fields['origin_country'].required = False
         self.fields['destination_country'].required = False
+        self.fields['origin_state'].required = False
+        self.fields['destination_state'].required = False
+
+    def clean(self):
+        cleaned_data = super().clean()
+        region = cleaned_data.get('region')
+
+        if region == 'within_malaysia':
+            origin_country = cleaned_data.get('origin_country')
+            destination_country = cleaned_data.get('destination_country')
+            origin_state = cleaned_data.get('origin_state')
+            destination_state = cleaned_data.get('destination_state')
+
+            if origin_country != 'malaysia':
+                self.add_error('origin_country', 'Must select Malaysia for this region')
+            if destination_country != 'malaysia':
+                self.add_error('destination_country', 'Must select Malaysia for this region')
+
+            if not origin_state:
+                self.add_error('origin_state', 'State is regquired for Malaysia')
+            if not destination_state:
+                self.add_error('destination_state','State is required for Malaysia')
+
+        elif region == 'within_asia':
+            origin_country = cleaned_data.get('origin_country')
+            destination_country = cleaned_data.get('destination_country')
+
+            asian_country_codes = [country[0] for country in self.ASIAN_COUNTRIES[1:]]
+
+            if origin_country and origin_country not in asian_country_codes:
+                self.add_error('origin_country', 'Must select an Asian country')
+            if destination_country and destination_country not in asian_country_codes:
+                self.add_error('destination_country', 'Must select an Asian country')
+
+        elif region == 'international':
+            origin_country = cleaned_data.get('origin_country')
+            destination_country = cleaned_data.get('destination_country')
+
+            international_country_codes = [country[0] for country in self.INTERNATIONAL_COUNTRIES[1:]]
+
+            if origin_country and origin_country not in international_country_codes:
+                self.add_error('origin_country', 'Must select an International country')
+
+            if destination_country and destination_country not in international_country_codes:
+                self.add_error('destination_country', 'Must select an International country')
+
+        return cleaned_data
