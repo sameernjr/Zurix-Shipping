@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>
         {% block title %}
-            Django App
+            Zurix-Shipping
         {% endblock %}
     </title>
 </head>
@@ -22,7 +22,7 @@
 				<li><a href="/About">About</a></li>
 				<li><a href="/Contact">Contact</a></li>
 				<li><a href="/shipping">Shipping</a></li>
-				<button class="nav-btn"><a href="{% url 'quote' %}">Get Quote</a></button>
+				<button class="nav-btn"><a href="{% url 'quote-form' %}">Get Quote</a></button>
                 {% comment %} <li><a href="#">Profile</a></li> {% endcomment %}
 			</ul>
 		</div>
