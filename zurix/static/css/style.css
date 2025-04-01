@@ -694,6 +694,95 @@ li a {
     align-self: start;
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+
+    /* Hero About Section */
+    .hero-about-container {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .hero-about {
+        text-align: center;
+    }
+
+    .about-header {
+        font-size: 28px;
+    }
+
+    /* About Section */
+    .about-container .about-content-2 .left-hover-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-container .about-content-2 .about-content-1 .about-header-1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .about-container .about-content-2 .about-content-1 .about-description-1 {
+        text-align: center;
+    }
+
+    .about-container .about-content-2 .about-2-right {
+        width: 100%;
+    }
+
+    /* FAQs Section */
+    .faqs-container {
+        width: 95%;
+        min-height: auto;
+        padding-bottom: 2rem;
+    }
+
+    .question h3 {
+        font-size: 1rem;
+    }
+
+    .answer p {
+        font-size: 1rem;
+    }
+
+    /* Testimonials Section */
+    .testimonials .testimonial-header {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .testimonials .testimonial-container {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials .testimonial-container .testimonial .testimonial-text {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* About Section */
+    .about-container .about-content-2 .left-hover-container {
+        width: 50%;
+    }
+
+    .about-container .about-content-2 .about-2-right {
+        width: 90%;
+    }
+
+    /* FAQs Section */
+    .faqs-container {
+        width: 90%;
+        min-height: auto;
+    }
+
+    /* Testimonials Section */
+    .testimonials .testimonial-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 /* Contact Us Styling */
 
 

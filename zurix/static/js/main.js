@@ -28,3 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Add this JavaScript to make FAQs interactive
+document.addEventListener('DOMContentLoaded', function () {
+    const faqs = document.querySelectorAll('.faq');
+
+    faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+            faq.classList.toggle('active');
+        });
+    });
+});
