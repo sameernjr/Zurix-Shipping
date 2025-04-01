@@ -28,6 +28,11 @@
     color: white;
 }
 
+.navdiv ul {
+    display: flex;
+    align-items: center;
+}
+
 li {
     list-style: none;
     display: inline-block;
@@ -42,7 +47,7 @@ li a {
 
 .nav-btn {
     appearance: none;
-    background-color: none;
+    background-color: white;
     border: 0.125em solid #1A1A1A;
     border-radius: 0.5em;
     box-sizing: border-box;
@@ -86,6 +91,7 @@ li a {
     color: black;
 }
 
+/* Hamburger menu icon */
 .menu-icon {
     display: none;
     cursor: pointer;
@@ -97,6 +103,72 @@ li a {
     background-color: white;
     margin: 5px 0;
     transition: 0.4s;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        z-index: 999;
+    }
+
+    .navdiv ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgb(23, 21, 21);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s ease-in-out;
+        z-index: 998;
+    }
+
+    .navdiv ul.active {
+        right: 0;
+    }
+
+    .navdiv ul li {
+        margin: 15px 0;
+        display: block;
+    }
+
+    li a {
+        font-size: 20px;
+    }
+
+    .nav-btn {
+        margin-top: 20px;
+    }
+
+    /* Hamburger to X animation */
+    .menu-icon.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-icon.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 24px;
+    }
+
+    .navdiv {
+        padding: 10px 0;
+    }
+
+    .navdiv ul {
+        width: 85%;
+    }
 }
 
 /* Hero Section Styling */
