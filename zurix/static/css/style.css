@@ -286,100 +286,6 @@ li a {
     transform: translateY(0);
 }
 
-/* Track Styling */
-
-.track-container {
-    display: grid;
-    width: auto;
-    height: fit-content;
-    background: #FFFFFF;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.track-container .track {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.track-container .track .track-header {
-    font-size: 40px;
-    font-weight: 700;
-    color: black;
-    padding-bottom: 15px;
-}
-
-.track-container .track .track-description {
-    font-size: 20px;
-    font-weight: 500;
-    color: black;
-    padding-bottom: 10px;
-}
-
-.track-container .track .track-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.track-container .track .track-form input {
-    border: none;
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-bottom: 20px;
-    background: #e8e8e8;
-    width: 100%;
-    transition: 0.3s;
-}
-
-.track-container .track .track-form input:focus {
-    outline-color: #e8e8e8;
-    box-shadow: inset 20px 20px 60px #d1d1d1, inset -20px -20px 60px #ffffff;
-    transition: 0.3s;
-}
-
-.track-container .track .track-form button {
-    appearance: none;
-    background-color: none;
-    border: 0.125em solid #1A1A1A;
-    border-radius: 0.5em;
-    box-sizing: border-box;
-    color: #3B3B3B;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: normal;
-    margin: 0;
-    min-height: 1.5rem;
-    min-width: 0;
-    outline: none;
-    padding: 0.5em 1.5em;
-    text-align: center;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
-}
-
-.track-container .track .track-form button:hover {
-    color: #1A1A1A;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-}
-
-.track-container .track .track-form button:active {
-    box-shadow: none;
-    transform: translateY(0);
-}
-
 /* Our Services styling */
 
 .services-container {
@@ -545,6 +451,63 @@ li a {
     font-weight: 500;
     color: black;
     padding-bottom: 10px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 2rem 1rem;
+        background: none;
+    }
+
+    .hero {
+        align-items: center;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .services-container .services .services-grid,
+    .why-us-container .why-us .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .hero-header,
+    .services-container .services .services-header,
+    .why-us-container .why-us .why-us-header {
+        font-size: 28px;
+    }
+
+    .btn-hero {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-btn,
+    .hero-btn-1 {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-container {
+        height: 500px;
+    }
+
+    .services-container .services .services-grid,
+    .why-us-container .why-us .why-us-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .hero-header,
+    .services-container .services .services-header,
+    .why-us-container .why-us .why-us-header {
+        font-size: 32px;
+    }
 }
 
 /* Section two of about us page */
