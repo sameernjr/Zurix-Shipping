@@ -13,3 +13,9 @@ class ShippingOrder(models.Model):
         ('Standard','Standard'),
         ('Express','Express'),
     ]
+
+    #User Relationship
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+
+    created_at = models.DateTimeField(auto_now_add=True)
