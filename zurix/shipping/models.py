@@ -15,6 +15,20 @@ class ShippingOrder(models.Model):
         ('Express','Express'),
     ]
 
+    STATUS_CHOICES = [
+    ('pending', 'Pending'),
+    ('processing', 'Processing'),
+    ('shipped', 'Shipped'),
+    ('delivered', 'Delivered'),
+    ('cancelled', 'Cancelled'),
+    ]
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending'
+    )
+
     #User Relationship
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
