@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Submitted Successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .confirmation-box {
+            border: 1px solid #4CAF50;
+            background-color: #f8fff8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .confirmation-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .order-details {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .col {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .price-summary {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .total-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2a6496;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button.secondary {
+            background-color: #777;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Submitted Successfully!</h2>
+    
+    <div class="confirmation-box">
+        <p class="confirmation-number">Order #{{ order.id }}</p>
+        <p>Thank you for your order. We've received your shipping request.</p>
+    </div>
+    
+    <div class="order-details">
+        <h4>Order Details</h4>
+        <div class="row">
+            <div class="col">
+                <h5>Package Information</h5>
+                <p><strong>Weight:</strong> {{ order.package_weight }} kg</p>
+                
+                <h5>Origin Information</h5>
+                <p><strong>Pickup Contact:</strong> {{ order.pickup_contact_name }}</p>
+                <p><strong>Phone:</strong> {{ order.pickup_contact_phone }}</p>
+                <p><strong>Address:</strong> {{ order.origin_address }}, {{ order.origin_state_country }}</p>
+            </div>
+            <div class="col">
+                <h5>Destination Information</h5>
+                <p><strong>Recipient:</strong> {{ order.destination_contact_name }}</p>
+                <p><strong>Phone:</strong> {{ order.destination_contact_phone }}</p>
+                <p><strong>Address:</strong> {{ order.destination_address }}, {{ order.destination_state_country }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="price-summary">
+        <h5>Shipping Summary</h5>
+        <p><strong>Method:</strong> {{ order.get_shipping_method_display }}</p>
+        <p><strong>Region:</strong> {{ order.get_region_display }}</p>
+        <p><strong>Base Price:</strong> ${{ order.base_price }}</p>
+        {% if order.express_fee > 0 %}
+        <p><strong>Express Fee:</strong> ${{ order.express_fee }}</p>
+        {% endif %}
+        <p class="total-price">Total: ${{ order.total_price }}</p>
+    </div>
+    
+    <div class="button-group">
+        <a href="{% url 'shipping_request' %}">
+            <button>Create Another Order</button>
+        </a>
+        <a href="{% url 'order_history' %}">
+            <button class="secondary">View All Orders</button>
+        </a>
+    </div>
+</body>
+</html>
