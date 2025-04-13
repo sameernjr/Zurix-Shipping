@@ -66,6 +66,7 @@ class ShippingOrder(models.Model):
     pickup_contact_number = models.CharField(
         max_length=20,
     )
+    
 
     #Destination Information
     destination_state_country = models.CharField(
