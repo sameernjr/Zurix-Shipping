@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.conf import settings
 
 class ShippingOrder(models.Model):
@@ -39,8 +39,8 @@ class ShippingOrder(models.Model):
     package_weight = models.DecimalField(
         max_digits=6,
         decimal_places=2,
-        validators=[MinLengthValidator(0.1)],
-        help_text="Weight in kg",
+        validators=[MinValueValidator(0.1)],  # Only use validators that work with Decimals
+        help_text="Weight in kilograms (kg)"
     )
 
     #Origin Information
