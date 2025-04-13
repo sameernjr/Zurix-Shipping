@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
+from django.conf import settings
 
 class ShippingOrder(models.Model):
     REGION_CHOICES = [
@@ -16,7 +17,7 @@ class ShippingOrder(models.Model):
 
     #User Relationship
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -35,7 +36,7 @@ class ShippingOrder(models.Model):
         choices=REGION_CHOICES
     )
 
-    origin_state_country = models.Charfield(
+    origin_state_country = models.CharField(
         max_length=100,
     )
     origin_address = models.TextField()
@@ -45,7 +46,7 @@ class ShippingOrder(models.Model):
         blank=True,
         null=True,
     )
-    pickup_contact_name = models.Charfield(
+    pickup_contact_name = models.CharField(
         max_length=100,
     )
     pickup_contact_number = models.CharField(
@@ -66,14 +67,14 @@ class ShippingOrder(models.Model):
 
     #Shipping Method
 
-    shipping_method = models.Charfield(
+    shipping_method = models.CharField(
         max_length=20,
         choices=SHIPPING_METHOD_CHOICES,
     )
 
     #Pricing Information
 
-    base_-price = models.DecimalField(
+    base_price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
     )
