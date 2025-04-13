@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Order History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .status-completed {
+            color: #4CAF50;
+        }
+        .no-orders {
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .contact-info {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Order History</h2>
+    
+    {% if orders %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Date</th>
+                    <th>Weight</th>
+                    <th>Method</th>
+                    <th>Pickup Contact</th>
+                    <th>Recipient</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.created_at|date:"M d, Y H:i" }}</td>
+                    <td>{{ order.package_weight }} kg</td>
+                    <td>{{ order.get_shipping_method_display }}</td>
+                    <td>
+                        {{ order.pickup_contact_name }}<br>
+                        <span class="contact-info">{{ order.pickup_contact_phone }}</span>
+                    </td>
+                    <td>
+                        {{ order.destination_contact_name }}<br>
+                        <span class="contact-info">{{ order.destination_contact_phone }}</span>
+                    </td>
+                    <td>${{ order.total_price }}</td>
+                    <td class="status-completed">Completed</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="no-orders">
+            You haven't placed any orders yet.
+        </div>
+    {% endif %}
+    
+    <a href="{% url 'shipping_request' %}">
+        <button>Create New Shipping Request</button>
+    </a>
+</body>
+</html>
