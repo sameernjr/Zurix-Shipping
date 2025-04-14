@@ -19,10 +19,10 @@ class ShippingOrderAdmin(admin.ModelAdmin):
             'fields': ('base_price', 'express_fee', 'total_price')
         }),
         ('Origin Information', {
-            'fields': ('origin_state_country', 'origin_address', 'pickup_contact_name', 'pickup_contact_phone', 'pick_up_point')
+            'fields': ('origin_state_country', 'origin_address', 'pickup_contact_name', 'pickup_contact_number', 'pick_up_point')
         }),
         ('Destination Information', {
-            'fields': ('destination_state_country', 'destination_address', 'destination_contact_name', 'destination_contact_phone')
+            'fields': ('destination_state_country', 'destination_address', 'destination_contact_name', 'destination_contact_number')
         }),
     )
 

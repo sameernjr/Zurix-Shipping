@@ -4,20 +4,8 @@ from .models import ShippingOrder
 class ShippingForm(forms.ModelForm):
     class Meta:
         model = ShippingOrder
-        fields = [
-            'package_weight',
-            'region',
-            'origin_state_country',
-            'origin_address',
-            'pick_up_point',
-            'pickup_contact_name',
-            'pickup_contact_number',
-            'destination_state_country',
-            'destination_address',
-            'destination_contact_name',
-            'destination_contact_number',
-            'shipping_method'
-        ]
+        fields = '__all__'
+        exclude = ['user','created_at','base_price', 'express_fee', 'total_price']
         widgets = {
             'package_weight': forms.NumberInput(attrs={
                 'step': '0.1',
@@ -68,8 +56,9 @@ class ShippingForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Make all fields except pick_up_point required
-        for field_name, field in self.fields.items():
-            if field_name != 'pick_up_point':
-                field.required = True
-            field.widget.attrs.update({'class': 'form-control'})
+        # Remove any string validators that might have been added
+        if 'package_weight' in self.fields:
+            self.fields['package_weight'].validators = [
+                v for v in self.fields['package_weight'].validators 
+                if not hasattr(v, 'code') or v.code != 'max_length'
+            ]
