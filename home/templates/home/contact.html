@@ -1,255 +1,943 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<style>
-    .contact-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 50px 20px;
-        background-color: #f8f9fa;
-        min-height: 80vh;
-    }
-    
-    .contact-card {
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        width: 100%;
-        max-width: 900px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .contact-header {
-        background-color: #f0f2f5;
-        padding: 30px;
-        border-bottom: 1px solid #eaeaea;
-    }
-    
-    .form-header {
-        color: #333;
-        font-size: 30px;
-        margin-bottom: 12px;
-        font-weight: 600;
-        text-align: center;
-    }
-    
-    .contact-subtitle {
-        color: #666;
-        font-size: 16px;
-        text-align: center;
-    }
-    
-    .contact-form-container {
-        padding: 40px;
-    }
-    
-    .contact-form {
-        width: 100%;
-    }
-    
-    .form-row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: -15px;
-        margin-right: -15px;
-        margin-bottom: 20px;
-    }
-    
-    .form-col-50 {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding: 0 15px;
-    }
-    
-    .form-col-100 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding: 0 15px;
-    }
-    
-    .form-group {
-        margin-bottom: 25px;
-    }
-    
-    .contact-label {
-        display: block;
-        margin-bottom: 10px;
-        color: #444;
-        font-weight: 500;
-        font-size: 16px;
-    }
-    
-    .contact-form input, 
-    .contact-form textarea {
-        width: 100%;
-        padding: 14px 18px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: all 0.3s;
-        background-color: #f9f9f9;
-    }
-    
-    .contact-form input:focus, 
-    .contact-form textarea:focus {
-        border-color: #555;
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
-        background-color: #fff;
-    }
-    
-    .contact-form textarea {
-        resize: vertical;
-        min-height: 180px;
-    }
-    
-    .btn-submit-container {
-        text-align: center;
-        margin-top: 10px;
-    }
-    
-    .btn-submit {
-        display: inline-block;
-        background-color: #333;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 15px 40px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 600;
-        min-width: 200px;
-    }
-    
-    .btn-submit:hover {
-        background-color: #444;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .message-container {
-        margin-top: 25px;
-    }
-    
-    .message-success {
-        background-color: #e8f5e9;
-        color: #2e7d32;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: 500;
-    }
-    
-    .message-error {
-        background-color: #ffebee;
-        color: #c62828;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: 500;
-    }
-    
-    .field-error {
-        color: #d32f2f;
-        font-size: 14px;
-        margin-top: 6px;
-    }
-    
-    @media (max-width: 768px) {
-        .form-col-50 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-        
-        .contact-form-container {
-            padding: 25px;
-        }
-        
-        .form-row {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        
-        .form-col-50, .form-col-100 {
-            padding: 0;
-        }
-    }
-</style>
+<div class="contact-hero">
+    <div class="contact-hero-content">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear from you. Let's start a conversation.</p>
+    </div>
+</div>
 
 <div class="contact-container">
-    <div class="contact-card">
-        <div class="contact-header">
-            <h1 class="form-header">Contact Us</h1>
-            <p class="contact-subtitle">We're here to help and answer any question you might have</p>
+    <div class="contact-layout">
+        <!-- Contact Information Side -->
+        <div class="contact-info">
+            <h2>Connect With Us</h2>
+            <p class="contact-info-desc">Have questions or need assistance? Our team is here to help you.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="method-info">
+                        <h3>Phone</h3>
+                        <p>+60 3-1234 5678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="method-info">
+                        <h3>Email</h3>
+                        <p>hello@zurixshipping.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="method-info">
+                        <h3>Location</h3>
+                        <p>Jalan Sultan Ismail, Kuala Lumpur, Malaysia</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="business-hours">
+                <h3>Business Hours</h3>
+                <div class="hours-grid">
+                    <span>Monday - Friday:</span>
+                    <span>9:00 AM - 6:00 PM</span>
+                    <span>Saturday:</span>
+                    <span>10:00 AM - 4:00 PM</span>
+                    <span>Sunday:</span>
+                    <span>Closed</span>
+                </div>
+            </div>
         </div>
         
-        <div class="contact-form-container">
-            <form method="post" class="contact-form">
+        <!-- Contact Form Side -->
+        <div class="contact-form-wrapper">
+            <div class="form-header">
+                <h2>Send us a message</h2>
+                <p>Fill out the form below, and we'll get back to you as soon as possible.</p>
+            </div>
+              <form method="post" class="contact-form">
                 {% csrf_token %}
+                <div class="form-progress"></div>
                 
                 <div class="form-row">
-                    <div class="form-col-50">
-                        <div class="form-group">
-                            <label for="id_name" class="contact-label">Full Name</label>
-                            {{ form.name }}
-                            {% if form.name.errors %}
-                                <div class="field-error">
-                                    {% for error in form.name.errors %}
-                                        {{ error }}
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
+                    <div class="form-floating {% if form.name.errors %}is-invalid{% endif %}">
+                        {{ form.name }}
+                        <label for="id_name">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Full Name
+                        </label>
+                        {% if form.name.errors %}
+                            <div class="field-error">
+                                {% for error in form.name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                     
-                    <div class="form-col-50">
-                        <div class="form-group">
-                            <label for="id_email" class="contact-label">Email Address</label>
-                            {{ form.email }}
-                            {% if form.email.errors %}
-                                <div class="field-error">
-                                    {% for error in form.email.errors %}
-                                        {{ error }}
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
+                    <div class="form-floating {% if form.email.errors %}is-invalid{% endif %}">
+                        {{ form.email }}
+                        <label for="id_email">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Email Address
+                        </label>
+                        {% if form.email.errors %}
+                            <div class="field-error">
+                                {% for error in form.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-col-100">
-                        <div class="form-group">
-                            <label for="id_message" class="contact-label">Your Message</label>
-                            {{ form.message }}
-                            {% if form.message.errors %}
-                                <div class="field-error">
-                                    {% for error in form.message.errors %}
-                                        {{ error }}
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
+                <div class="form-group">
+                    <div class="form-floating">
+                        <select id="id_subject" name="subject" class="form-select">
+                            <option value="" selected disabled>Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="shipping">Shipping to Malaysia</option>
+                            <option value="tracking">Package Tracking</option>
+                            <option value="international">International Shipping</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label for="id_subject">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                <line x1="4" y1="9" x2="20" y2="9"></line>
+                                <line x1="4" y1="15" x2="20" y2="15"></line>
+                                <line x1="10" y1="3" x2="8" y2="21"></line>
+                                <line x1="16" y1="3" x2="14" y2="21"></line>
+                            </svg>
+                            Subject
+                        </label>
                     </div>
                 </div>
                 
-                <div class="btn-submit-container">
-                    <button type="submit" class="btn-submit">Send Message</button>
+                <div class="form-floating textarea-floating {% if form.message.errors %}is-invalid{% endif %}">
+                    {{ form.message }}
+                    <label for="id_message">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Your Message
+                    </label>
+                    {% if form.message.errors %}
+                        <div class="field-error">
+                            {% for error in form.message.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">terms and conditions</a></label>
+                </div>
+                
+                <button type="submit" class="btn-submit">
+                    <span>Send Message</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
             </form>
             
             <div class="message-container">
                 {% for message in messages %}
-                    <div class="message-{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}">
-                        {{ message }}
+                    <div class="message message-{% if message.tags %}{{ message.tags }}{% else %}success{% endif %}">
+                        {% if message.tags == 'success' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        {% endif %}
+                        <span>{{ message }}</span>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 </div>
+
+<div class="map-container">
+    <h2>Visit Our Office</h2>
+    <div class="map-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7724791972637!2d101.70762081475883!3d3.1494391977205334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37d12d669c1f%3A0x9e3afdd17c8a9056!2sJalan%20Sultan%20Ismail%2C%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sus!4v1652183214432!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+<style>
+    /* Hero Section */
+    .contact-hero {
+        position: relative;
+        height: 250px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    .contact-hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static "images/ship.svg" %}');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        z-index: 1;
+    }
+    
+    .contact-hero-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+    }
+    
+    .contact-hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+    
+    .contact-hero-content p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Contact Container */
+    .contact-container {
+        max-width: 1200px;
+        margin: -50px auto 40px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 30px;
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Contact Info Side */
+    .contact-info {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        color: #fff;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .contact-info::before {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    .contact-info h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-info-desc {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-methods {
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-method {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    
+    .method-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .method-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: #fff;
+    }
+    
+    .contact-method:hover .method-icon {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+    
+    .method-info h3 {
+        font-size: 1.1rem;
+        margin: 0 0 5px;
+        font-weight: 600;
+    }
+    
+    .method-info p {
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0;
+    }
+    
+    /* Social Links */
+    .social-links {
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .social-links h3 {
+        font-size: 1.1rem;
+        margin: 0 0 15px;
+        font-weight: 600;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: #fff;
+    }
+    
+    .social-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+    }
+    
+    /* Business Hours */
+    .business-hours {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .business-hours h3 {
+        font-size: 1.1rem;
+        margin: 0 0 15px;
+        font-weight: 600;
+    }
+    
+    .hours-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+      /* Contact Form Side */
+    .contact-form-wrapper {
+        padding: 40px;
+        background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .form-header::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(to right, #1a1a1a, #4a4a4a);
+        border-radius: 2px;
+    }
+    
+    .form-header h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+    
+    .form-header p {
+        color: #666;
+        font-size: 1.05rem;
+    }
+    
+    /* Floating Label Form Fields */
+    .form-floating {
+        position: relative;
+        margin-bottom: 25px;
+        transition: transform 0.2s ease;
+    }
+    
+    .form-floating:focus-within {
+        transform: translateY(-3px);
+    }
+    
+    .form-floating input,
+    .form-floating textarea,
+    .form-floating select {
+        width: 100%;
+        padding: 18px 16px;
+        font-size: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        background-color: #f9f9f9;
+        transition: all 0.3s ease;
+        height: auto;
+        color: #333;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+      .form-floating select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        padding-right: 40px;
+        cursor: pointer;
+    }
+    
+    .form-floating label {
+        position: absolute;
+        top: 18px;
+        left: 16px;
+        color: #666;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .form-floating input:focus,
+    .form-floating textarea:focus,
+    .form-floating select:focus {
+        outline: none;
+        border-color: #1a1a1a;
+        background-color: #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border-width: 2px;
+    }
+    
+    .form-floating input:focus ~ label,
+    .form-floating textarea:focus ~ label,
+    .form-floating select:focus ~ label,
+    .form-floating input:not(:placeholder-shown) ~ label,
+    .form-floating textarea:not(:placeholder-shown) ~ label,
+    .form-floating select:not([value=""]):not([value="default"]) ~ label {
+        top: -12px;
+        left: 12px;
+        font-size: 0.8rem;
+        padding: 0 8px;
+        background-color: #fff;
+        color: #1a1a1a;
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 0 0 2px #fff;
+    }
+      .form-floating input::placeholder,
+    .form-floating textarea::placeholder {
+        color: transparent;
+    }
+    
+    .form-floating.textarea-floating textarea {
+        min-height: 160px;
+        resize: vertical;
+        line-height: 1.6;
+    }
+    
+    /* Input Focus Highlight Effects */
+    .form-floating::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #333, #777);
+        transition: width 0.3s ease, left 0.3s ease;
+        transform: translateX(-50%);
+        border-radius: 2px;
+        z-index: 1;
+        opacity: 0;
+    }
+    
+    .form-floating:focus-within::after {
+        width: 60%;
+        opacity: 1;
+    }
+    
+    /* Checkbox Styling */
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 5px 0;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .checkbox-group label {
+        padding-left: 36px;
+        position: relative;
+        cursor: pointer;
+        font-size: 0.95rem;
+        color: #555;
+        transition: color 0.2s ease;
+        font-weight: 500;
+    }
+      .checkbox-group label::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .checkbox-group label::after {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        width: 7px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .checkbox-group input[type="checkbox"]:checked + label::before {
+        background-color: #1a1a1a;
+        border-color: #1a1a1a;
+        transform: scale(1.05);
+    }
+    
+    .checkbox-group input[type="checkbox"]:checked + label {
+        color: #1a1a1a;
+    }
+    
+    .checkbox-group input[type="checkbox"]:checked + label::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1.2);
+    }
+    
+    .checkbox-group label a {
+        color: #1a1a1a;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 2px;
+        transition: all 0.2s ease;
+    }
+    
+    .checkbox-group label a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #1a1a1a;
+        transform: scaleX(0.6);
+        transform-origin: bottom left;
+        transition: transform 0.3s ease;
+    }
+    
+    .checkbox-group label a:hover::after {
+        transform: scaleX(1);
+    }
+      /* Submit Button */
+    .btn-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 18px 40px;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        font-weight: 600;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 0.5px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        letter-spacing: 1px;
+    }
+    
+    .btn-submit:active {
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-submit::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+        transition: opacity 0.3s ease;
+    }
+    
+    .btn-submit::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.15);
+        transform: rotate(45deg);
+        transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        opacity: 0;
+    }
+    
+    .btn-submit:hover::after {
+        opacity: 1;
+        transform: rotate(45deg) translateX(100%);
+    }
+    
+    .send-icon {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .btn-submit:hover .send-icon {
+        transform: translateX(4px) rotate(-10deg);
+    }
+      /* Message Container */
+    .message-container {
+        margin-top: 30px;
+    }
+    
+    .message {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        border-radius: 12px;
+        font-weight: 500;
+        animation: slideIn 0.5s ease forwards;
+        transform: translateY(10px);
+        opacity: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid;
+    }
+    
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .message svg {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+    
+    .message-success {
+        background-color: rgba(46, 125, 50, 0.08);
+        color: #2e7d32;
+        border-color: rgba(46, 125, 50, 0.3);
+    }
+    
+    .message-success svg {
+        stroke: #2e7d32;
+    }
+    
+    .message-error {
+        background-color: rgba(198, 40, 40, 0.08);
+        color: #c62828;
+        border-color: rgba(198, 40, 40, 0.3);
+    }
+    
+    .message-error svg {
+        stroke: #c62828;
+    }
+    
+    .field-error {
+        color: #c62828;
+        font-size: 0.85rem;
+        margin-top: 8px;
+        padding-left: 16px;
+        display: flex;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    .field-error::before {
+        content: '•';
+        margin-right: 6px;
+        font-size: 1.2rem;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* Map Section */
+    .map-container {
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+    }
+    
+    .map-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.8rem;
+    }
+    
+    .map-wrapper {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Responsive Design */    /* Custom Form Input States */
+    .form-floating.is-valid input,
+    .form-floating.is-valid textarea,
+    .form-floating.is-valid select {
+        border-color: rgba(46, 125, 50, 0.5);
+        background-color: rgba(46, 125, 50, 0.03);
+    }
+    
+    .form-floating.is-valid label {
+        color: #2e7d32;
+    }
+    
+    .form-floating.is-invalid input,
+    .form-floating.is-invalid textarea,
+    .form-floating.is-invalid select {
+        border-color: rgba(198, 40, 40, 0.5);
+        background-color: rgba(198, 40, 40, 0.03);
+    }
+    
+    /* Progress Indicator for Form Submission */
+    .form-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #1a1a1a, #777);
+        width: 0%;
+        transition: width 0.3s ease;
+        z-index: 10;
+        opacity: 0;
+    }
+    
+    .contact-form.submitting .form-progress {
+        width: 100%;
+        opacity: 1;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .contact-layout {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-hero-content h1 {
+            font-size: 2.5rem;
+        }
+        
+        .contact-info {
+            padding: 30px;
+        }
+        
+        .contact-form-wrapper {
+            padding: 30px;
+            border-left: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-floating:focus-within {
+            transform: translateY(-2px);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .contact-hero {
+            height: 200px;
+        }
+        
+        .contact-hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .contact-hero-content p {
+            font-size: 1rem;
+        }
+        
+        .contact-container {
+            margin-top: -30px;
+        }
+        
+        .map-wrapper iframe {
+            height: 300px;
+        }
+        
+        .btn-submit {
+            padding: 16px 30px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .contact-info {
+            padding: 25px;
+        }
+        
+        .contact-form-wrapper {
+            padding: 25px;
+        }
+        
+        .hours-grid {
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+        
+        .hours-grid span:nth-child(even) {
+            margin-bottom: 10px;
+        }
+        
+        .form-header h2 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
 {% endblock %}
