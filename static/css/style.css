@@ -508,6 +508,33 @@ li a {
     .why-us-container .why-us .why-us-header {
         font-size: 32px;
     }
+
+    /* About Section */
+    .about-container .about-content-2 .left-hover-container {
+        width: 50%;
+    }
+
+    .about-container .about-content-2 .about-2-right {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-container .about-content-2 .about-2-right .about-side-image {
+        max-width: 280px;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+    
+    /* Testimonials Section */
+    .testimonials .testimonial-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .testimonials .testimonial-container .testimonial .profile {
+        width: 75px;
+        height: 75px;
+    }
 }
 
 /* Section two of about us page */
@@ -702,6 +729,20 @@ li a {
     border-radius: 15px;
 }
 
+.testimonials .testimonial-container .testimonial .profile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.testimonials .testimonial-container .testimonial .profile:hover {
+    transform: scale(1.1);
+}
+
 .testimonials .testimonial-container .testimonial .testimonial-text {
     font-size: 20px;
     color: #fff;
@@ -781,9 +822,7 @@ li a {
 
     .answer p {
         font-size: 1rem;
-    }
-
-    /* Testimonials Section */
+    }    /* Testimonials Section */
     .testimonials .testimonial-header {
         font-size: 28px;
         text-align: center;
@@ -791,6 +830,12 @@ li a {
 
     .testimonials .testimonial-container {
         grid-template-columns: 1fr;
+    }
+    
+    .testimonials .testimonial-container .testimonial .profile {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
     }
 
     .testimonials .testimonial-container .testimonial .testimonial-text {
@@ -814,6 +859,17 @@ li a {
         max-width: 280px;
         border-radius: 10px;
         margin: 0 auto;
+    }
+    
+    /* Testimonials Section */
+    .testimonials .testimonial-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .testimonials .testimonial-container .testimonial .profile {
+        width: 75px;
+        height: 75px;
     }
 
     /* FAQs Section */

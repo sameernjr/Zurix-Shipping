@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="#4ecdc4"/>
+  <!-- Head -->
+  <circle cx="100" cy="85" r="40" fill="#f9f7f7"/>
+  <!-- Body -->
+  <path d="M100,135 Q60,135 40,180 L160,180 Q140,135 100,135" fill="#f9f7f7"/>
+  <!-- Hair/Beard -->
+  <path d="M60,80 Q70,40 100,50 Q130,40 140,80 L125,85 Q105,65 75,85 Z" fill="#8a5a44"/>
+  <path d="M70,105 Q100,140 130,105 L120,125 Q100,140 80,125 Z" fill="#8a5a44"/>
+</svg>
