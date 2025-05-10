@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>
+        {% block title %}
+            Zurix-Shipping
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <nav class="navbar">
+		<div class="navdiv">
+			<div class="logo"><a href="/">Zurix-Shipping</a> </div>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/About">About</a></li>
+				<li><a href="/Contact">Contact</a></li>
+				<li><a href="{% url 'shipping_request' %}">Shipping</a></li>
+				<button class="nav-btn"><a href="#">Get Quote</a></button>
+			</ul>
+            <div class="menu-icon">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+		</div>
+	</nav>
+  {% block content %}
+  
+  {% endblock %}
+
+  <div class="footer">
+    <div class="layer1-container">
+        <div class="layer1">
+            <h3 class="footer-header">Opening Hours</h3>
+            <p class="weekdays"><b>Weekdays:</b> 8.00am - 7.30pm </p>
+            <p class="weekends"><b>Saturday, Sundays:</b> 8.00am - 2.00pm </p>
+        </div>
+        <div class="layer1">
+            <h3 class="footer-header">Address</h3>
+            <p class="footer-address">1234 Elm Street, Springfield, IL 62704</p>
+        </div>
+        <div class="layer1">
+            <h3 class="footer-header">Contact</h3>
+            <p class="footer-phone"><b>Phone:</b> (555) 123-4567</p>
+            <p class="footer-email"><b>Email:</b> info@zurix-shipping.com</p>
+        </div>
+    </div>
+    <div class="rights-policy">
+        <p>&copy; 2021 Zurix-Shipping. All rights reserved.</p>
+        <p>Privacy Policy | Terms of Service</p>
+        <a href="" class="instagram">Instagram</a>
+        <a href="" class="facebook">Facebook</a>
+        <a href="" class="LinkedIn">LinkedIn</a>
+        <a href="" class="twitter">Twitter</a>
+    </div>
+  </div>
+
+</body>
+</html>
