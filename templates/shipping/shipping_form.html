@@ -77,13 +77,12 @@
                 {% endif %}
             </div>
             
-            <div class="form-group">
-                <label for="{{ form.pickup_contact_number.id_for_label }}" class="required-label">
+            <div class="form-group">                <label for="{{ form.pickup_contact_number.id_for_label }}" class="required-label">
                     Pickup Contact Phone
                 </label>
                 {{ form.pickup_contact_number }}
-                {% if form.pickup_contact_phone.errors %}
-                    <div class="field-error">{{ form.pickup_contact_phone.errors }}</div>
+                {% if form.pickup_contact_number.errors %}
+                    <div class="field-error">{{ form.pickup_contact_number.errors }}</div>
                 {% endif %}
             </div>
             
@@ -132,13 +131,12 @@
                 {% endif %}
             </div>
             
-            <div class="form-group">
-                <label for="{{ form.destination_contact_number.id_for_label }}" class="required-label">
+            <div class="form-group">                <label for="{{ form.destination_contact_number.id_for_label }}" class="required-label">
                     Destination Contact Phone
                 </label>
                 {{ form.destination_contact_number }}
-                {% if form.destination_contact_phone.errors %}
-                    <div class="field-error">{{ form.destination_contact_phone.errors }}</div>
+                {% if form.destination_contact_number.errors %}
+                    <div class="field-error">{{ form.destination_contact_number.errors }}</div>
                 {% endif %}
             </div>
         </div>

@@ -124,16 +124,13 @@
             <input type="hidden" name="destination_contact_name" value="{{ order.destination_contact_name }}">
             <input type="hidden" name="destination_contact_number" value="{{ order.destination_contact_number }}">
             <input type="hidden" name="shipping_method" value="{{ order.shipping_method }}">
-              <div class="button-group">
+            
+            <div class="button-group">
                 <a href="{% url 'shipping_request' %}">
                     <button type="button" class="back">← Back to Form</button>
                 </a>
                 <button type="submit" name="confirm_order" value="true">Confirm Order Now</button>
             </div>
-            <!-- Debug info to show form is working -->
-            <script>
-                console.log('Order preview form loaded with data');
-            </script>
         </form>
     </div>
 </body>

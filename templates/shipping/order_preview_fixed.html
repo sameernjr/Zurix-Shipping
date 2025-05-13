@@ -79,7 +79,7 @@
                 <p><strong>Weight:</strong> {{ order.package_weight }} kg</p>
                 
                 <h5>Origin Information</h5>
-                <p><strong>Region:</strong> {{ order.get_region_display }}</p>
+                <p><strong>Region:</strong> {% if order.region %}{{ order.get_region_display }}{% else %}Not specified{% endif %}</p>
                 <p><strong>State/Country:</strong> {{ order.origin_state_country }}</p>
                 <p><strong>Address:</strong> {{ order.origin_address }}</p>
                 <p><strong>Pickup Contact:</strong> {{ order.pickup_contact_name }}</p>
@@ -98,8 +98,8 @@
         </div>
         
         <div class="price-summary">
-            <h5>Shipping Method: {{ order.get_shipping_method_display }}</h5>
-            <p><strong>Base Price ({{ order.get_region_display }}):</strong> ${{ order.base_price }}</p>
+            <h5>Shipping Method: {% if order.shipping_method %}{{ order.get_shipping_method_display }}{% else %}Not specified{% endif %}</h5>
+            <p><strong>Base Price ({% if order.region %}{{ order.get_region_display }}{% else %}Not specified{% endif %}):</strong> ${{ order.base_price }}</p>
             {% if order.express_fee > 0 %}
             <p><strong>Express Fee:</strong> ${{ order.express_fee }}</p>
             {% endif %}
@@ -108,32 +108,22 @@
         
         <form method="post" action="{% url 'shipping_request' %}">
             {% csrf_token %}
-            
             <!-- Hidden fields to preserve data -->
-            <input type="hidden" name="package_weight" value="{{ order.package_weight }}">
-            <input type="hidden" name="region" value="{{ order.region }}">
-            <input type="hidden" name="origin_state_country" value="{{ order.origin_state_country }}">
-            <input type="hidden" name="origin_address" value="{{ order.origin_address }}">
-            <input type="hidden" name="pickup_contact_name" value="{{ order.pickup_contact_name }}">
-            <input type="hidden" name="pickup_contact_number" value="{{ order.pickup_contact_number }}">
-            {% if order.pick_up_point %}
-            <input type="hidden" name="pick_up_point" value="{{ order.pick_up_point }}">
-            {% endif %}
-            <input type="hidden" name="destination_state_country" value="{{ order.destination_state_country }}">
-            <input type="hidden" name="destination_address" value="{{ order.destination_address }}">
-            <input type="hidden" name="destination_contact_name" value="{{ order.destination_contact_name }}">
-            <input type="hidden" name="destination_contact_number" value="{{ order.destination_contact_number }}">
-            <input type="hidden" name="shipping_method" value="{{ order.shipping_method }}">
-              <div class="button-group">
+            {% for field, value in request.POST.items %}
+                {% if field != 'csrfmiddlewaretoken' %}
+                    <input type="hidden" name="{{ field }}" value="{{ value }}">
+                {% endif %}
+            {% endfor %}
+            
+            <!-- Add necessary shipping fields -->
+            <input type="hidden" name="confirm_order" value="true">
+            
+            <div class="button-group">
                 <a href="{% url 'shipping_request' %}">
                     <button type="button" class="back">← Back to Form</button>
                 </a>
-                <button type="submit" name="confirm_order" value="true">Confirm Order Now</button>
+                <button type="submit">Confirm Order Now</button>
             </div>
-            <!-- Debug info to show form is working -->
-            <script>
-                console.log('Order preview form loaded with data');
-            </script>
         </form>
     </div>
 </body>

@@ -5,9 +5,9 @@
 }
 
 /* Make sure Django's select field works with floating labels */
-.form-floating select:not(:placeholder-shown) ~ label,
-.form-floating select:focus ~ label,
-.form-floating select:-internal-autofill-selected ~ label {
+.form-floating select:not(:placeholder-shown)~label,
+.form-floating select:focus~label,
+.form-floating select:-internal-autofill-selected~label {
     top: -12px;
     left: 12px;
     font-size: 0.8rem;

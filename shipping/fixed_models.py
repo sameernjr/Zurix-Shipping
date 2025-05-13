@@ -5,7 +5,7 @@ from django.conf import settings
 
 class ShippingOrder(models.Model):
     REGION_CHOICES = [
-        ('Malaysia','Malaysia'),
+        ('Malaysia,','Malaysia'),
         ('Asia','Asia'),
         ('International','International'),
     ]
@@ -54,7 +54,7 @@ class ShippingOrder(models.Model):
     origin_address = models.TextField()
 
     pick_up_point = models.CharField(
-        max_length=225,
+        max_width=225,
         blank=True,
         null=True,
     )
@@ -106,7 +106,7 @@ class ShippingOrder(models.Model):
         return f"Order #{self.id} ({self.total_price} USD)"
     
     def calculate_pricing(self):
-        if self.region == 'Malaysia':
+        if self.region == 'Malaysia,':  # Note the comma in 'Malaysia,'
             self.base_price = 20 if float(self.package_weight) < 1 else 20 * float(self.package_weight)
         elif self.region == 'Asia':
             self.base_price = 50 if float(self.package_weight) < 1 else 50 * float(self.package_weight)
@@ -120,9 +120,7 @@ class ShippingOrder(models.Model):
         self.total_price = self.base_price + self.express_fee
         
     def save(self, *args, **kwargs):
-        # Calculate pricing if not already done
-        if self.base_price == 0 and self.express_fee == 0 and self.total_price == 0:
-            self.calculate_pricing()
+        self.calculate_pricing()
         super().save(*args, **kwargs)
         
     class Meta:

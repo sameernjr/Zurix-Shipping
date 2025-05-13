@@ -25,12 +25,11 @@ class ShippingForm(forms.ModelForm):
             }),
             'pick_up_point': forms.TextInput(attrs={
                 'placeholder': 'Specific pick up location if needed'
-            }),
-            'pickup_contact_name': forms.TextInput(attrs={
+            }),            'pickup_contact_name': forms.TextInput(attrs={
                 'placeholder': 'Contact person for pickup',
                 'required': 'required'
             }),
-            'pickup_contact_phone': forms.TextInput(attrs={
+            'pickup_contact_number': forms.TextInput(attrs={
                 'placeholder': 'Phone number for pickup',
                 'required': 'required'
             }),

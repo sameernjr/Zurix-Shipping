@@ -16,20 +16,18 @@ def shipping_request(request):
                 order.user = request.user
                 order.calculate_pricing()
                 
-                # Debug log
-                print(f"DEBUG: Proceeding to order preview with {order.shipping_method} shipping")
-                print(f"DEBUG: Total price: ${order.total_price}")
+                # Debug print to console for troubleshooting
+                print(f"Proceeding to order preview. Base Price: ${order.base_price}, Total: ${order.total_price}")
                 
+                # Directly render the order preview template with the order object
                 return render(request, 'shipping/order_preview.html', {'order': order})
             else:
+                print(f"Form validation failed: {form.errors}")
                 messages.error(request, "Please correct the errors in the form.")
+                
         elif 'confirm_order' in request.POST:
             # Final submission - save to database
             form = ShippingForm(request.POST)
-            
-            # Debug print
-            print(f"DEBUG: Confirm order POST data received")
-            
             if form.is_valid():
                 order = form.save(commit=False)
                 order.user = request.user
@@ -38,15 +36,13 @@ def shipping_request(request):
                 # Calculate prices
                 order.calculate_pricing()
                 
-                # Debug print
-                print(f"DEBUG: Saving order with total: ${order.total_price}")
-                
                 order.save()
                 messages.success(request, "Your order has been placed successfully!")
                 return redirect('order_success', order_id=order.id)
             else:
-                print(f"Form errors: {form.errors}")
+                print(f"Form errors during confirmation: {form.errors}")
                 messages.error(request, "There was an error processing your order.")
+                
     else:
         form = ShippingForm()
     

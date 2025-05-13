@@ -1,3 +1,4 @@
+# Fixed shipping views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -15,21 +16,12 @@ def shipping_request(request):
                 order = form.save(commit=False)
                 order.user = request.user
                 order.calculate_pricing()
-                
-                # Debug log
-                print(f"DEBUG: Proceeding to order preview with {order.shipping_method} shipping")
-                print(f"DEBUG: Total price: ${order.total_price}")
-                
                 return render(request, 'shipping/order_preview.html', {'order': order})
             else:
                 messages.error(request, "Please correct the errors in the form.")
         elif 'confirm_order' in request.POST:
             # Final submission - save to database
             form = ShippingForm(request.POST)
-            
-            # Debug print
-            print(f"DEBUG: Confirm order POST data received")
-            
             if form.is_valid():
                 order = form.save(commit=False)
                 order.user = request.user
@@ -38,20 +30,17 @@ def shipping_request(request):
                 # Calculate prices
                 order.calculate_pricing()
                 
-                # Debug print
-                print(f"DEBUG: Saving order with total: ${order.total_price}")
-                
                 order.save()
                 messages.success(request, "Your order has been placed successfully!")
                 return redirect('order_success', order_id=order.id)
             else:
-                print(f"Form errors: {form.errors}")
                 messages.error(request, "There was an error processing your order.")
     else:
         form = ShippingForm()
     
     return render(request, 'shipping/shipping_form.html', {
-        'form': form
+        'form': form,
+        'messages': messages.get_messages(request)
     })
 
 @login_required
@@ -70,5 +59,6 @@ def order_success(request, order_id):
 def order_history(request):
     orders = ShippingOrder.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'shipping/order_history.html', {
-        'orders': orders
+        'orders': orders,
+        'messages': messages.get_messages(request)
     })
