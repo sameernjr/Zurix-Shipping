@@ -1,0 +1,20 @@
+/* Form Select Field Styles */
+.form-floating select {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+}
+
+/* Make sure Django's select field works with floating labels */
+.form-floating select:not(:placeholder-shown) ~ label,
+.form-floating select:focus ~ label,
+.form-floating select:-internal-autofill-selected ~ label {
+    top: -12px;
+    left: 12px;
+    font-size: 0.8rem;
+    padding: 0 8px;
+    background-color: #fff;
+    color: #1a1a1a;
+    font-weight: 600;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #fff;
+}
