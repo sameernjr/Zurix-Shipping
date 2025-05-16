@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-fixes.css' %}">
     {% block extra_css %}
-    {% endblock %}
-    <title>
+    {% endblock %}    <title>
         {% block title %}
-            Zurix-Shipping
+            Zurix
         {% endblock %}
     </title>
 </head>
@@ -19,12 +18,10 @@
 
     <nav class="navbar">
 		<div class="navdiv">
-			<div class="logo"><a href="/">Zurix-Shipping</a> </div>
-			<ul>
+			<div class="logo"><a href="/">Zurix</a> </div>			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="/About">About</a></li>
 				<li><a href="/Contact">Contact</a></li>
-				<li><a href="{% url 'shipping_request' %}">Shipping</a></li>
 				<button class="nav-btn"><a href="#">Get Quote</a></button>
 			</ul>
             <div class="menu-icon">
@@ -52,7 +49,7 @@
         <div class="layer1">
             <h3 class="footer-header">Contact</h3>
             <p class="footer-phone"><b>Phone:</b> (555) 123-4567</p>
-            <p class="footer-email"><b>Email:</b> info@zurix-shipping.com</p>
+            <p class="footer-email"><b>Email:</b> info@zurix.com</p>
         </div>
     </div>
     <div class="rights-policy">
