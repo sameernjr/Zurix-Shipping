@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+import uuid
 
 class Shipping(models.Model):
     class TypeChoices(models.TextChoices):
@@ -10,7 +12,9 @@ class Shipping(models.Model):
         STANDARD = 'ST', 'Standard'
         EXPRESS = 'EX', 'Express'
         
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    order_id = models.CharField(primary_key=True, max_length=255, editable=False)
+    order_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     weight = models.DecimalField(max_digits=5, decimal_places=2)
     shipping_location = models.CharField(max_length=255, choices=TypeChoices.choices)
     pickup_location = models.CharField(max_length=255)
@@ -18,6 +22,25 @@ class Shipping(models.Model):
     destination_location = models.CharField(max_length=255)
     destination_contact = models.CharField(max_length=255)
     shipping_type = models.CharField(max_length=2, choices=ShippingType.choices)
+
+
+    def save(self, *args, **kwargs):
+        if not self.order_id:
+            self.order_id = self.generate_order_id()
+        super().save(*args, **kwargs)
+
+    def _generate_unique_order_id(self):
+
+        from datetime import datetime
+        year = datetime.now().year
+        unique_id = str(uuid.uuid4()).split('-')[0].upper()
+        order_id = f"ZX-{year}-{unique_id}"
+
+        while Shipping.objects.filter(order_id=order_id).exists():
+            unique_id = str(uuid.uuid4()).split('-')[0].upper()
+            order_id = f"ZX-{year}-{unique_id}"
+
+        return order_id
 
     def calculate_shipping_cost(self):
 
@@ -34,5 +57,39 @@ class Shipping(models.Model):
             base_cost += 20
 
         return base_cost
-    
+
+class ShippingPreview:
+
+    def __init__(self, form_data):
+        self.weight = form_data.get('weight')
+        self.shipping_location = form_data.get('shipping_location')
+        self.pickup_location = form_data.get('pickup_location')
+        self.pickup_contact = form_data.get('pickup_contact')
+        self.destination_location = form_data.get('destination_location')
+        self.destination_contact = form_data.get('destination_contact')
+        self.shipping_type = form_data.get('shipping_type')
+
+        def get_shipping_location_display(self):
+            location_choices = dict(Shipping.TypeChoices.choices)
+            return location_choices.get(self.shipping_location,'')
+        
+        def get_shipping_type_display(self):
+            type_choices = dict(Shipping.ShippingType.choices)
+            return type_choices.get(self.shipping_type, '')
+        
+        def calculate_shipping_cost(self):
+            location_rates = {
+                Shipping.TypeChoices.MALAYSIA: 10.00,
+                Shipping.TypeChoices.ASIA: 20.00,
+                Shipping.TypeChoices.INTERNATIONAL: 30.00,
+            }
+
+            base_rate = location_rates.get(self.shipping_location, 0)
+            base_cost = float(self.weight) * base_rate
+
+            if self.shipping_type == Shipping.ShippingType.EXPRESS:
+                base_cost += 20
+
+            return base_cost
+        
     
