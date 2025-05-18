@@ -26,7 +26,7 @@ class Shipping(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.order_id:
-            self.order_id = self.generate_order_id()
+            self.order_id = self._generate_unique_order_id()
         super().save(*args, **kwargs)
 
     def _generate_unique_order_id(self):
@@ -69,27 +69,30 @@ class ShippingPreview:
         self.destination_contact = form_data.get('destination_contact')
         self.shipping_type = form_data.get('shipping_type')
 
-        def get_shipping_location_display(self):
-            location_choices = dict(Shipping.TypeChoices.choices)
-            return location_choices.get(self.shipping_location,'')
+    def get_shippinng_location_display(self):
+        location_choices = dict(Shipping.TypeChoices.choices)
+        return location_choices.get(self.shipping_location, '')
+    
+    def get_shipping_type_display(self):
+        type_choices = dict(Shipping.ShippingType.choices)
+        return type_choices.get(self.shipping_location, '')
+    
+    def calculate_shipping_cost(self):
+        location_rates = {
+            Shipping.TypeChoices.MALAYSIA: 10.00,
+            Shipping.TypeChoices.ASIA: 20.00,
+            Shipping.TypeChoices.INTERNATIONAL: 30.00,
+        }
+
+        if not self.weight:
+            return 0
         
-        def get_shipping_type_display(self):
-            type_choices = dict(Shipping.ShippingType.choices)
-            return type_choices.get(self.shipping_type, '')
-        
-        def calculate_shipping_cost(self):
-            location_rates = {
-                Shipping.TypeChoices.MALAYSIA: 10.00,
-                Shipping.TypeChoices.ASIA: 20.00,
-                Shipping.TypeChoices.INTERNATIONAL: 30.00,
-            }
+        base_rate = location_rates.get(self.shipping_location, 0)
+        base_cost = float(self.weight) * base_rate
 
-            base_rate = location_rates.get(self.shipping_location, 0)
-            base_cost = float(self.weight) * base_rate
+        if self.shipping_type == Shipping.ShippingType.EXPRESS:
+            base_cost += 20
 
-            if self.shipping_type == Shipping.ShippingType.EXPRESS:
-                base_cost += 20
-
-            return base_cost
+        return base_cost
         
     
