@@ -12,6 +12,13 @@ class Shipping(models.Model):
         STANDARD = 'ST', 'Standard'
         EXPRESS = 'EX', 'Express'
         
+    class StatusChoices(models.TextChoices):
+        PENDING = 'P', 'Pending'
+        PROCESSING = 'PR', 'Processing'
+        SHIPPED = 'S', 'Shipped'
+        DELIVERED = 'D', 'Delivered'
+        CANCELLED = 'C', 'Cancelled'
+    
     order_id = models.CharField(primary_key=True, max_length=255, editable=False)
     order_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -22,6 +29,12 @@ class Shipping(models.Model):
     destination_location = models.CharField(max_length=255)
     destination_contact = models.CharField(max_length=255)
     shipping_type = models.CharField(max_length=2, choices=ShippingType.choices)
+    status = models.CharField(
+        max_length=2, 
+        choices=StatusChoices.choices,
+        default=StatusChoices.PENDING,
+        help_text="Current status of the shipping order"
+    )
 
 
     def save(self, *args, **kwargs):
@@ -69,7 +82,7 @@ class ShippingPreview:
         self.destination_contact = form_data.get('destination_contact')
         self.shipping_type = form_data.get('shipping_type')
 
-    def get_shippinng_location_display(self):
+    def get_shipping_location_display(self):
         location_choices = dict(Shipping.TypeChoices.choices)
         return location_choices.get(self.shipping_location, '')
     
@@ -94,5 +107,5 @@ class ShippingPreview:
             base_cost += 20
 
         return base_cost
-        
-    
+
+

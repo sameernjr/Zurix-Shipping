@@ -8,7 +8,7 @@ from .models import Shipping, ShippingPreview
 def create_shipping(request):
     if request.method == 'POST':
         form = ShippingForm(request.POST)
-        if form.isvalid():
+        if form.is_valid():
             request.session['shipping_preview'] = form.cleaned_data
             return redirect('shipping:preview')
     else:
@@ -19,7 +19,7 @@ def create_shipping(request):
 def shipping_preview(request):
     preview_data = request.session.get('shipping_preview')
     if not preview_data:
-        return redirect('create_shipping')
+        return redirect('shipping:create_shipping')
     
     preview_data['weight'] = float(preview_data['weight'])
 
@@ -29,7 +29,7 @@ def shipping_preview(request):
     context = {
         'preview': preview,
         'shipping_cost': shipping_cost,
-        'shipping_location_display': preview.get_shippinng_location_display(),
+        'shipping_location_display': preview.get_shipping_location_display(),
         'shipping_type_display': preview.get_shipping_type_display(),
     }
 
@@ -40,7 +40,7 @@ def shipping_preview(request):
 def confirm_shipping(request):
     preview_data = request.session.get('shipping_preview')
     if not preview_data:
-        return redirect('create_shipping')
+        return redirect('shipping:create_shipping')
     
     shipping = Shipping(
         user = request.user,
@@ -51,10 +51,19 @@ def confirm_shipping(request):
         destination_location = preview_data['destination_location'],
         destination_contact = preview_data['destination_contact'],
         shipping_type = preview_data['shipping_type'],
+        status = Shipping.StatusChoices.PENDING,  # Set initial status
     )
 
     shipping.save()
 
     if 'shipping_preview' in request.session:
         del request.session['shipping_preview']
-    return redirect('shipping_detail', order_id=shipping.order_id)
+    return redirect('shipping:shipping_detail', order_id=shipping.order_id)  # Fixed namespace
+
+@login_required
+def shipping_detail(request, order_id):
+    try:
+        shipping = Shipping.objects.get(order_id=order_id)
+        return render(request, 'shipping/shipping_detail.html', {'shipping': shipping})
+    except Shipping.DoesNotExist:
+        return redirect('shipping:create_shipping')
