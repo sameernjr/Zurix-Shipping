@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ship
+{% endblock  %}
+
+{% block content %}
+    <h2>Create Shipping Order</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.on_field_errors }}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock  %}
