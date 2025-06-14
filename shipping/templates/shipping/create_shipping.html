@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Create Shipping Order - Adams-Shipping{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Create Shipping Order</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="error-messages">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        
+        <div class="form-group">
+            <label for="{{ form.weight.id_for_label }}">Weight (kg):</label>
+            {{ form.weight }}
+            {% if form.weight.errors %}
+                <div class="error">{{ form.weight.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.shipping_location.id_for_label }}">Shipping Location:</label>
+            {{ form.shipping_location }}
+            {% if form.shipping_location.errors %}
+                <div class="error">{{ form.shipping_location.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.pickup_location.id_for_label }}">Pickup Location:</label>
+            {{ form.pickup_location }}
+            {% if form.pickup_location.errors %}
+                <div class="error">{{ form.pickup_location.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.pickup_contact.id_for_label }}">Pickup Contact:</label>
+            {{ form.pickup_contact }}
+            {% if form.pickup_contact.errors %}
+                <div class="error">{{ form.pickup_contact.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.destination_location.id_for_label }}">Destination Location:</label>
+            {{ form.destination_location }}
+            {% if form.destination_location.errors %}
+                <div class="error">{{ form.destination_location.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.destination_contact.id_for_label }}">Destination Contact:</label>
+            {{ form.destination_contact }}
+            {% if form.destination_contact.errors %}
+                <div class="error">{{ form.destination_contact.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.shipping_type.id_for_label }}">Shipping Type:</label>
+            {{ form.shipping_type }}
+            {% if form.shipping_type.errors %}
+                <div class="error">{{ form.shipping_type.errors }}</div>
+            {% endif %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Preview Order</button>
+    </form>
+</div>
+{% endblock %}
