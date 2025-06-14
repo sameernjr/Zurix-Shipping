@@ -51,14 +51,14 @@ def confirm_shipping(request):
         destination_location = preview_data['destination_location'],
         destination_contact = preview_data['destination_contact'],
         shipping_type = preview_data['shipping_type'],
-        status = Shipping.StatusChoices.PENDING,  # Set initial status
+        status = Shipping.StatusChoices.PENDING,
     )
 
     shipping.save()
 
     if 'shipping_preview' in request.session:
         del request.session['shipping_preview']
-    return redirect('shipping:shipping_detail', order_id=shipping.order_id)  # Fixed namespace
+    return redirect('shipping:shipping_detail', order_id=shipping.order_id)
 
 @login_required
 def shipping_detail(request, order_id):
